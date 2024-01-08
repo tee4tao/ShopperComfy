@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
@@ -6,6 +6,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(false);
+  const [userUsername, setUserUsername] = useState("");
+  const [userpassword, setUserPassword] = useState("");
   const handleToggle = () => {
     if (type === "password") {
       setIcon(true);
@@ -15,10 +17,31 @@ const Login = () => {
       setType("password");
     }
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(`jk`);
+  };
+  const getUser = async () => {
+    try {
+      const resp = await fetch("https://dummyjson.com/users/1");
+      if (!resp.ok) {
+        throw new Error(`Something went wrong ${resp.status}`);
+      }
+      let user = await resp.json();
+      console.log(user);
+      setUserUsername(user.username);
+      setUserPassword(user.password);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getUser();
+  }, [username, password]);
   return (
     <main className="h-screen w-screen flex justify-center items-center">
       <section className=" w-80 login-container rounded-md flex justify-center items-center">
-        <form action="" className="">
+        <form action="" className="" onSubmit={handleSubmit}>
           <div className="mb-4">
             {/* <label htmlFor="username">Username:</label> */}
             <input
