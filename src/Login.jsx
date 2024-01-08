@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -7,7 +8,9 @@ const Login = () => {
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(false);
   const [userUsername, setUserUsername] = useState("");
-  const [userpassword, setUserPassword] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [invalid, setInvalid] = useState(false);
+  const [invalidPassword, setInvalidPassword] = useState(false);
   const handleToggle = () => {
     if (type === "password") {
       setIcon(true);
@@ -19,7 +22,27 @@ const Login = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`jk`);
+    if (
+      (username !== userUsername && password !== userPassword) ||
+      username !== userUsername
+    ) {
+      setInvalid(true);
+    } else if (password !== userPassword) {
+      setInvalidPassword(true);
+    } else {
+      setInvalid(false);
+      setInvalidPassword(false);
+    }
+    // if (
+    //   username === `` ||
+    //   password === `` ||
+    //   username !== userUsername ||
+    //   password !== userpassword
+    // ) {
+    //   setInvalid(true);
+    // } else {
+    //   setInvalid(false);
+    // }
   };
   const getUser = async () => {
     try {
@@ -73,6 +96,12 @@ const Login = () => {
               )}
             </span>
           </div>
+          {/* {invalid && ( */}
+          <div className="text-red-600">
+            {invalid && `Invalid username or password`}
+            {invalidPassword && `Invalid password`}
+          </div>
+          {/* )} */}
           <button
             type="submit"
             className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
