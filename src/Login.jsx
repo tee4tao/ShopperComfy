@@ -60,8 +60,8 @@ const Login = () => {
   }, [username, password]);
   return (
     <main className="h-screen w-screen flex justify-center items-center">
-      <section className=" w-80 login-container rounded-md flex justify-center items-center">
-        <form action="" className="" onSubmit={handleSubmit}>
+      <section className=" w-80 login-container rounded-md flex-col justify-center items-center">
+        <form action="" className="mb-6" onSubmit={handleSubmit}>
           <div className="mb-4">
             {/* <label htmlFor="username">Username:</label> */}
             <input
@@ -72,7 +72,7 @@ const Login = () => {
               className="border-2 w-72 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300 md:w-96"
             />
           </div>
-          <div className="mb-4 flex">
+          <div className="mb-4 flex w-96">
             <input
               type={type}
               name="password"
@@ -134,6 +134,15 @@ const Login = () => {
             {!auth && `Login`}
           </button> */}
         </form>
+        <div>
+          Don't have an acount? Sign up{" "}
+          <Link
+            to="register"
+            className="text-Dark-nude ease-linear duration-300 hover:text-black hover:underline"
+          >
+            here
+          </Link>
+        </div>
       </section>
     </main>
   );
