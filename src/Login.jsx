@@ -11,6 +11,7 @@ const Login = () => {
   const [userPassword, setUserPassword] = useState("");
   const [invalid, setInvalid] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
+  const [auth, setAuth] = useState(false);
   const handleToggle = () => {
     if (type === "password") {
       setIcon(true);
@@ -22,6 +23,7 @@ const Login = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(auth);
     if (
       (username !== userUsername && password !== userPassword) ||
       username !== userUsername
@@ -32,16 +34,11 @@ const Login = () => {
     } else {
       setInvalid(false);
       setInvalidPassword(false);
+      setAuth(true);
     }
-    // if (
-    //   username === `` ||
-    //   password === `` ||
-    //   username !== userUsername ||
-    //   password !== userpassword
-    // ) {
-    //   setInvalid(true);
-    // } else {
-    //   setInvalid(false);
+    // if (username === userUsername && password === userPassword) {
+    //   setAuth(true);
+    //   console.log(`core`);
     // }
   };
   const getUser = async () => {
@@ -102,12 +99,40 @@ const Login = () => {
             {invalidPassword && `Invalid password`}
           </div>
           {/* )} */}
-          <button
+
+          {username === userUsername && password === userPassword && (
+            <Link to={"home"}>
+              <button
+                type="submit"
+                className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
+              >
+                Login
+              </button>
+            </Link>
+          )}
+          {(username === userUsername && password === userPassword) || (
+            <button
+              type="submit"
+              className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
+            >
+              Login
+            </button>
+          )}
+          {/* {auth || (
+            <button
+              type="submit"
+              className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
+            >
+              Loin
+            </button>
+          )} */}
+          {/* <button
             type="submit"
             className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
           >
-            Login
-          </button>
+            {auth && <Link to={`home`}>Login</Link>}
+            {!auth && `Login`}
+          </button> */}
         </form>
       </section>
     </main>
