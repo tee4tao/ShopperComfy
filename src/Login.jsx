@@ -41,9 +41,9 @@ const Login = () => {
     //   console.log(`core`);
     // }
   };
-  const getUser = async () => {
+  const getUser = async (id) => {
     try {
-      const resp = await fetch("https://dummyjson.com/users/1");
+      const resp = await fetch(`https://dummyjson.com/users/${id}`);
       if (!resp.ok) {
         throw new Error(`Something went wrong ${resp.status}`);
       }
@@ -56,7 +56,7 @@ const Login = () => {
     }
   };
   useEffect(() => {
-    getUser();
+    getUser(1);
   }, [username, password]);
   return (
     <main className="h-screen w-screen flex justify-center items-center">
