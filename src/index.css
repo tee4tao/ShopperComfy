@@ -42,3 +42,27 @@
     transform: translateX(-100%);
   }
 }
+@media screen and (max-width: 420px) {
+  .name {
+    font-size: 1rem;
+    width: 80%;
+  }
+  .username {
+    font-size: 1rem;
+    width: 80%;
+  }
+  .email {
+    font-size: 1rem;
+    width: 80%;
+  }
+  .password {
+    font-size: 1rem;
+  }
+  .password-container {
+    width: 80%;
+  }
+  .open-eye,
+  .close-eye {
+    width: 1rem;
+  }
+}

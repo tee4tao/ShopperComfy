@@ -84,37 +84,37 @@ const SignUp = () => {
           )}
           <form
             action=""
-            className="mb-6 h-3/4 w-3/4 bg-Dark-nude flex flex-col items-center justify-center rounded-lg shadow-lg ease-linear duration-300 hover:shadow-2xl"
+            className="mb-6 h-3/4 w-3/4 hover:bg-Dark-nude flex flex-col items-center justify-center rounded-lg shadow-lg ease-linear duration-300 hover:shadow-2xl p-4"
             onSubmit={handleSubmit}
           >
-            <div className="mb-4">
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Your name"
-                className="border-2 w-72 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300 md:w-96"
-              />
-            </div>
-            <div className="mb-4">
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Your username"
-                className="border-2 w-72 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300 md:w-96"
-              />
-            </div>
-            <div className="mb-4">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email"
-                className="border-2 w-72 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300 md:w-96"
-              />
-            </div>
-            <div className="mb-4 flex">
+            {/* <div className="mb-4"> */}
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Your name"
+              className="name border-2 w-3/5 mb-4 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300 md:w-3/5"
+            />
+            {/* </div> */}
+            {/* <div className="mb-4"> */}
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Your username"
+              className="username border-2 mb-4 w-3/5 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300"
+            />
+            {/* </div> */}
+            {/* <div className="mb-4"> */}
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your email"
+              className="email border-2 mb-4 w-3/5 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300"
+            />
+            {/* </div> */}
+            <div className="password-container mb-4 flex w-3/5">
               <input
                 type={type}
                 name="password"
@@ -123,22 +123,22 @@ const SignUp = () => {
                 minLength={8}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Your password"
-                className="border-2 w-72 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300 md:w-96"
+                className="password border-2 w-full border-black h-14 rounded-md p-2 text-xl ease-linear duration-300 "
               />
               <span
                 className="flex justify-around items-center"
                 onClick={handleToggle}
               >
                 {icon ? (
-                  <FaEye className="absolute mr-10" size={25} />
+                  <FaEye className="open-eye absolute mr-10" size={25} />
                 ) : (
-                  <FaEyeSlash className="absolute mr-10" size={25} />
+                  <FaEyeSlash className="close-eye absolute mr-10" size={25} />
                 )}
               </span>
             </div>
             <button
               type="submit"
-              className="border-2 w-72 bg-transparent text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
+              className="border-2 w-3/5 bg-Dark-nude hover:text-Dark-nude hover:bg-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 text-white"
             >
               Register
             </button>
