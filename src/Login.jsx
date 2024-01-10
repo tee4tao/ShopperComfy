@@ -1,17 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(false);
-  const [userUsername, setUserUsername] = useState("");
-  const [userPassword, setUserPassword] = useState("");
   const [invalid, setInvalid] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
-  const [auth, setAuth] = useState(false);
+  const navigateTo = useNavigate();
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : []; // To get the items saved in the local storage
@@ -28,7 +26,6 @@ const Login = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(auth);
     if (
       (username !== getUserDetail.username &&
         password !== getUserDetail.password) ||
@@ -36,28 +33,13 @@ const Login = () => {
     ) {
       setInvalid(true);
     } else if (password !== getUserDetail.password) {
+      setInvalid(false);
       setInvalidPassword(true);
     } else {
       setInvalid(false);
       setInvalidPassword(false);
-      setAuth(true);
+      navigateTo("home"); // to redirect to the route(home page) after submission of the form
     }
-    // if (
-    //   (username !== userUsername && password !== userPassword) ||
-    //   username !== userUsername
-    // ) {
-    //   setInvalid(true);
-    // } else if (password !== userPassword) {
-    //   setInvalidPassword(true);
-    // } else {
-    //   setInvalid(false);
-    //   setInvalidPassword(false);
-    //   setAuth(true);
-    // }
-    // if (username === userUsername && password === userPassword) {
-    //   setAuth(true);
-    //   console.log(`core`);
-    // }
   };
   // const getUser = async (id) => {
   //   try {
@@ -73,15 +55,6 @@ const Login = () => {
   //     console.log(err);
   //   }
   // };
-  // useEffect(() => {
-  //   getUser(1);
-  // }, [username, password]);
-  useEffect(() => {
-    // if (Object.keys(getUserDetail).length != 0) {
-    //   console.log(loadedUser);
-    //   setGetUserDetail[{ loadedUser }];
-    // }
-  }, []);
   return (
     <main className="h-screen w-screen flex justify-center items-center">
       <section className=" w-80 login-container rounded-md flex-col justify-center items-center">
@@ -117,38 +90,20 @@ const Login = () => {
               )}
             </span>
           </div>
-          {/* {invalid && ( */}
           <div className="text-red-600">
             {invalid
               ? `Invalid username or password`
               : invalidPassword
               ? `Invalid password`
               : ``}
-            {/* {invalid && `Invalid username or password`}
-            {invalidPassword && `Invalid password`} */}
           </div>
           {/* )} */}
-
-          {username === getUserDetail.username &&
-            password === getUserDetail.password && (
-              <Link to={"home"}>
-                <button
-                  type="submit"
-                  className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
-                >
-                  Login
-                </button>
-              </Link>
-            )}
-          {(username === getUserDetail.username &&
-            password === getUserDetail.password) || (
-            <button
-              type="submit"
-              className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
-            >
-              Login
-            </button>
-          )}
+          <button
+            type="submit"
+            className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
+          >
+            Login
+          </button>
         </form>
         <div>
           Don't have an acount? Sign up{" "}

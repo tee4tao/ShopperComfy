@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.danger {
+  background-color: #e74c3c;
+}
+.underline {
+  height: 0.3rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  /* transform: translateX(-25%); */
+  /* animation: slide 3s linear 0s 1 normal normal; */
+  animation-name: slide;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: unset;
+  animation-direction: normal;
+  /* transition: all 0.3s linear; */
+}
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(-25%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  75% {
+    transform: translateX(-75%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
