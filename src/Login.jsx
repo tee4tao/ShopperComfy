@@ -12,6 +12,11 @@ const Login = () => {
   const [invalid, setInvalid] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
   const [auth, setAuth] = useState(false);
+  const loadedUser = localStorage.getItem("userDetail")
+    ? JSON.parse(localStorage.getItem("userDetail"))
+    : []; // To get the items saved in the local storage
+  const [getUserDetail, setGetUserDetail] = useState(loadedUser);
+  console.log(getUserDetail.password);
   const handleToggle = () => {
     if (type === "password") {
       setIcon(true);
@@ -25,39 +30,58 @@ const Login = () => {
     e.preventDefault();
     console.log(auth);
     if (
-      (username !== userUsername && password !== userPassword) ||
-      username !== userUsername
+      (username !== getUserDetail.username &&
+        password !== getUserDetail.password) ||
+      username !== getUserDetail.username
     ) {
       setInvalid(true);
-    } else if (password !== userPassword) {
+    } else if (password !== getUserDetail.password) {
       setInvalidPassword(true);
     } else {
       setInvalid(false);
       setInvalidPassword(false);
       setAuth(true);
     }
+    // if (
+    //   (username !== userUsername && password !== userPassword) ||
+    //   username !== userUsername
+    // ) {
+    //   setInvalid(true);
+    // } else if (password !== userPassword) {
+    //   setInvalidPassword(true);
+    // } else {
+    //   setInvalid(false);
+    //   setInvalidPassword(false);
+    //   setAuth(true);
+    // }
     // if (username === userUsername && password === userPassword) {
     //   setAuth(true);
     //   console.log(`core`);
     // }
   };
-  const getUser = async (id) => {
-    try {
-      const resp = await fetch(`https://dummyjson.com/users/${id}`);
-      if (!resp.ok) {
-        throw new Error(`Something went wrong ${resp.status}`);
-      }
-      let user = await resp.json();
-      console.log(user);
-      setUserUsername(user.username);
-      setUserPassword(user.password);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getUser = async (id) => {
+  //   try {
+  //     const resp = await fetch(`https://dummyjson.com/users/${id}`);
+  //     if (!resp.ok) {
+  //       throw new Error(`Something went wrong ${resp.status}`);
+  //     }
+  //     let user = await resp.json();
+  //     console.log(user);
+  //     setUserUsername(user.username);
+  //     setUserPassword(user.password);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getUser(1);
+  // }, [username, password]);
   useEffect(() => {
-    getUser(1);
-  }, [username, password]);
+    // if (Object.keys(getUserDetail).length != 0) {
+    //   console.log(loadedUser);
+    //   setGetUserDetail[{ loadedUser }];
+    // }
+  }, []);
   return (
     <main className="h-screen w-screen flex justify-center items-center">
       <section className=" w-80 login-container rounded-md flex-col justify-center items-center">
@@ -95,22 +119,29 @@ const Login = () => {
           </div>
           {/* {invalid && ( */}
           <div className="text-red-600">
-            {invalid && `Invalid username or password`}
-            {invalidPassword && `Invalid password`}
+            {invalid
+              ? `Invalid username or password`
+              : invalidPassword
+              ? `Invalid password`
+              : ``}
+            {/* {invalid && `Invalid username or password`}
+            {invalidPassword && `Invalid password`} */}
           </div>
           {/* )} */}
 
-          {username === userUsername && password === userPassword && (
-            <Link to={"home"}>
-              <button
-                type="submit"
-                className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
-              >
-                Login
-              </button>
-            </Link>
-          )}
-          {(username === userUsername && password === userPassword) || (
+          {username === getUserDetail.username &&
+            password === getUserDetail.password && (
+              <Link to={"home"}>
+                <button
+                  type="submit"
+                  className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
+                >
+                  Login
+                </button>
+              </Link>
+            )}
+          {(username === getUserDetail.username &&
+            password === getUserDetail.password) || (
             <button
               type="submit"
               className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
@@ -118,21 +149,6 @@ const Login = () => {
               Login
             </button>
           )}
-          {/* {auth || (
-            <button
-              type="submit"
-              className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
-            >
-              Loin
-            </button>
-          )} */}
-          {/* <button
-            type="submit"
-            className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
-          >
-            {auth && <Link to={`home`}>Login</Link>}
-            {!auth && `Login`}
-          </button> */}
         </form>
         <div>
           Don't have an acount? Sign up{" "}

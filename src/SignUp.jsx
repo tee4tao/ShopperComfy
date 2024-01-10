@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -10,17 +11,30 @@ const SignUp = () => {
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(false);
   const [userDetail, setUserDetail] = useState({});
+  const [test, setTest] = useState(false);
+  const navigateTo = useNavigate();
+  const [errors, setErrors] = useState({});
   const detail = {
     name: name,
     email: email,
     username: username,
     password: password,
   };
+  // const validateValues = (inputValues) => {
+  //   let errors = {};
+  //   if (inputValues.email.length < 15) {
+  //     errors.email = "Email is too short";
+  //   }
+  //   if (inputValues.password.length < 5) {
+  //     errors.password = "Password is too short";
+  //   }
+  //   return errors;
+  // };
   const handleSubmit = (e) => {
-    // if (Object.keys(detail).length != 0) {
-    //   console.log(`empty`);
-    // }
     e.preventDefault();
+    // if (Object.keys(userDetail).length != 0) {
+    //   setErrors(validateValues(userDetail));
+    // }
     if (
       name != `` &&
       email != `` &&
@@ -29,6 +43,8 @@ const SignUp = () => {
       // Object.keys(userDetail).length != 0
     ) {
       setUserDetail({ ...detail });
+      setTest(true);
+      // navigateTo("/");
       console.log(userDetail);
     }
   };
@@ -44,6 +60,8 @@ const SignUp = () => {
   useEffect(() => {
     if (Object.keys(userDetail).length != 0) {
       localStorage.setItem(`userDetail`, JSON.stringify(userDetail));
+      navigateTo("/");
+      // setTest(true);
       // console.log(`weere`);
       // console.log(userDetail);
     }
@@ -71,7 +89,7 @@ const SignUp = () => {
     // })
     //   .then((res) => res.json())
     //   .then(console.log);
-    localStorage.setItem;
+    // localStorage.setItem;
   }, [detail]);
   return (
     <main className="h-screen w-screen flex justify-center items-center">
@@ -131,13 +149,49 @@ const SignUp = () => {
             {invalid && `Invalid username or password`}
             {invalidPassword && `Invalid password`}
           </div> */}
-
           <button
             type="submit"
             className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
           >
             Register
           </button>
+          {/* {test? username !== `` &&
+            password !== `` &&
+            email !== `` &&
+            name !== `` && (
+              <Link to={"/"}>
+                <button
+                  type="submit"
+                  className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
+                >
+                  Register
+                </button>
+              </Link>
+            ):`` } */}
+          {/* {username !== `` &&
+            password !== `` &&
+            email !== `` &&
+            name !== `` && (
+              <Link to={"/"}>
+                <button
+                  type="submit"
+                  className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
+                >
+                  Register
+                </button>
+              </Link>
+            )}
+          {(username !== `` &&
+            password !== `` &&
+            email !== `` &&
+            name !== ``) || (
+            <button
+              type="submit"
+              className="border-2 w-72 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white md:w-96"
+            >
+              Register
+            </button>
+          )} */}
         </form>
         <div>
           You already have an acount? Login{" "}
