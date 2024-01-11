@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+*,
+::after,
+::before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -29,6 +31,9 @@
   100% {
     transform: scale(1.5);
   }
+}
+.links *:hover {
+  padding-left: 1.5rem;
 }
 .danger {
   background-color: #e74c3c;
