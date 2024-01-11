@@ -94,3 +94,9 @@
     width: 1rem;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .links-container {
+    height: auto !important;
+  }
+}
