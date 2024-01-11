@@ -7,6 +7,29 @@
   margin: 0;
   padding: 0;
 }
+.nav-logo {
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+}
+.toggle-btn {
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  animation-name: bounce;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes bounce {
+  0% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
 .danger {
   background-color: #e74c3c;
 }
