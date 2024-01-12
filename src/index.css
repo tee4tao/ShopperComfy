@@ -99,4 +99,7 @@
   .links-container {
     height: auto !important;
   }
+  .links *:hover {
+    padding-left: 0;
+  }
 }
