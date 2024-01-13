@@ -4,9 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { PiWarningCircleFill } from "react-icons/pi";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import { useGlobalContext } from "./context";
 
 const SignUp = () => {
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,6 +16,7 @@ const SignUp = () => {
   const [danger, setDanger] = useState(false);
   const [userDetail, setUserDetail] = useState({});
   const navigateTo = useNavigate();
+  const { username, setUsername } = useGlobalContext();
   const detail = {
     name: name,
     email: email,

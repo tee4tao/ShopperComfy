@@ -4,9 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { PiWarningCircleFill } from "react-icons/pi";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import { useGlobalContext } from "./context";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
+  const { username, setUsername } = useGlobalContext();
   const [password, setPassword] = useState("");
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(false);
@@ -47,7 +49,7 @@ const Login = () => {
     } else {
       setInvalid(false);
       setInvalidPassword(false);
-      navigateTo("home"); // to redirect to the route(home page) after submission of the form
+      navigateTo(`home/${username}`); // to redirect to the route(home page) after submission of the form
     }
   };
   const closeAlert = () => {
