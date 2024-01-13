@@ -49,7 +49,7 @@ const Login = () => {
     } else {
       setInvalid(false);
       setInvalidPassword(false);
-      navigateTo(`home/${username}`); // to redirect to the route(home page) after submission of the form
+      navigateTo(`home/${loadedUser.username}`); // to redirect to the route(home page) after submission of the form
     }
   };
   const closeAlert = () => {
