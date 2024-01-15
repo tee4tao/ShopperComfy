@@ -16,7 +16,7 @@ const Nav = () => {
   }, [showLinks]);
 
   return (
-    <main className="fixed top-0 w-screen ">
+    <main className=" w-screen ">
       <nav className="w-full flex justify-center items-center shadow-2xl bg-Dark-nude">
         <div className="nav-center flex flex-col justify-between items-center w-11/12 md:flex-row md:max-w-6xl md:justify-between md:p-4">
           <div className="nav-header flex justify-between items-center w-full p-2 md:p-0">

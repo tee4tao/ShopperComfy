@@ -48,8 +48,45 @@ const Home = () => {
     );
   }
   return (
-    <main className="min-h-screen  w-screen">
-      {products.products.map((items) => console.log(items))}
+    <main className="min-h-screen w-screen grid place-items-center">
+      <section className="goods-container w-3/5 max-w-7xl grid gap-4">
+        {products.products.map((items) => {
+          const {
+            id,
+            brand,
+            category,
+            description,
+            discountPercentage,
+            images,
+            price,
+            rating,
+            stock,
+            thumbnail,
+            title,
+          } = items;
+          return (
+            <article
+              key={id}
+              className="grid place-items-center my-4 shadow-lg"
+            >
+              <img
+                src={thumbnail}
+                alt={title}
+                className="w-full h-60 object-cover rounded-t-md"
+              />
+              <div className="details-container">
+                <div className="item-header flex items-center justify-between w-full mb-4">
+                  <h3 className="item-name text-xl">{title}</h3>
+                  <p className="item-price bg-Dark-nude text-white p-1 rounded-md">
+                    ${price}
+                  </p>
+                </div>
+                <p className="item-desc">{description}</p>
+              </div>
+            </article>
+          );
+        })}
+      </section>
     </main>
   );
 };
