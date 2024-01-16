@@ -6,6 +6,9 @@ const Nav = () => {
   const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
+  const loadedUser = localStorage.getItem("userDetail")
+    ? JSON.parse(localStorage.getItem("userDetail"))
+    : [];
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
     if (showLinks) {
@@ -16,11 +19,11 @@ const Nav = () => {
   }, [showLinks]);
 
   return (
-    <main className=" w-screen ">
+    <main className="">
       <nav className="w-full flex justify-center items-center shadow-2xl bg-Dark-nude">
         <div className="nav-center flex flex-col justify-between items-center w-11/12 md:flex-row md:max-w-6xl md:justify-between md:p-4">
           <div className="nav-header flex justify-between items-center w-full p-2 md:p-0">
-            <Link to={"home"} className="nav-logo">
+            <Link to={`home/${loadedUser.username}`} className="nav-logo">
               ShopperComfy
             </Link>
             <button
@@ -39,7 +42,7 @@ const Nav = () => {
               ref={linksRef}
             >
               <Link
-                to={"home"}
+                to={`home/${loadedUser.username}`}
                 className="capitalize text-lg text-Dark-nude w-screen hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2"
               >
                 Home

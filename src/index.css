@@ -165,16 +165,15 @@
   }
 }
 @media screen and (min-width: 768px) {
-  .gooods-container {
+  .goods-container {
     grid-template-columns: 1fr 1fr;
     /* fix stretch */
     align-items: start;
   }
 }
-@media screen and (min-width: 992px) {
+/* @media screen and (min-width: 992px) {
   .goods-container {
     grid-template-columns: 1fr 1fr 1fr;
-    /* fix stretch */
     align-items: start;
   }
 }
@@ -182,4 +181,4 @@
   section {
     width: 90%;
   }
-}
+} */
