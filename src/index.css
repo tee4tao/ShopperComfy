@@ -38,6 +38,9 @@
 .danger {
   background-color: #e74c3c;
 }
+.item-container {
+  /* height: 33rem; */
+}
 .underline {
   height: 0.3rem;
   width: 100%;
@@ -171,14 +174,3 @@
     align-items: start;
   }
 }
-/* @media screen and (min-width: 992px) {
-  .goods-container {
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: start;
-  }
-}
-@media screen and (max-width: 650px) {
-  section {
-    width: 90%;
-  }
-} */
