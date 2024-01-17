@@ -5,9 +5,11 @@ import Nav from "./Nav";
 import Home from "./Home.jsx";
 import SignUp from "./SignUp.jsx";
 import Error from "./Error.jsx";
+import { useGlobalContext } from "./context";
+import Product from "./Product.jsx";
 
 function App() {
-  // const { username, setUsername } = useGlobalContext();
+  const { productId, setproductId } = useGlobalContext();
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
@@ -25,6 +27,10 @@ function App() {
         {
           path: "register",
           element: <SignUp />,
+        },
+        {
+          path: `product/${productId}`,
+          element: <Product />,
         },
       ],
     },
