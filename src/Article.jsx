@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "./context";
 
 const Article = ({ items }) => {
   const navigateTo = useNavigate();
-  const { productId, setProductId } = useGlobalContext();
-  const {
+  let {
     id,
     brand,
     category,
@@ -18,30 +17,35 @@ const Article = ({ items }) => {
     thumbnail,
     title,
   } = items;
+  const [test, setTest] = useState(false);
+  let { productId, setProductId } = useGlobalContext();
   const handleClick = () => {
     setProductId(id);
-
+    setTest(true);
+    // navigateTo(`/product/${productId}`);
     console.log(id);
   };
   const handleAdd = () => {
-    console.log(`hi`);
+    console.log(`add to cart`);
   };
-  // useEffect(() => {
-  //   navigateTo(`product/${productId}`);
-  // }, [productId]);
+  useEffect(() => {
+    if (test) {
+      navigateTo(`/product/${productId}`);
+    }
+  }, [productId]);
   return (
     <article
       key={id}
       className="item-container flex flex-col my-4 shadow-lg hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white cursor-pointer relative"
     >
-      <Link to={`product/${id}`}>
-        <img
-          src={thumbnail}
-          alt={title}
-          className="w-full h-60 object-cover rounded-t-md"
-          onClick={handleClick}
-        />
-      </Link>
+      {/* <Link to={`/product/${productId}`}> */}
+      <img
+        src={thumbnail}
+        alt={title}
+        className="w-full h-60 object-cover rounded-t-md"
+        onClick={handleClick}
+      />
+      {/* </Link> */}
 
       <div
         onClick={handleClick}

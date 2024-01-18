@@ -53,37 +53,6 @@ const Home = () => {
       <section className="mx-1 md:w-3/5 max-w-7xl grid grid-cols-2 lg:grid-cols-3 gap-4 ease-linear duration-300">
         {products.products.map((items) => {
           return <Article items={items} key={items.id} />;
-          // const {
-          //   id,
-          //   brand,
-          //   category,
-          //   description,
-          //   discountPercentage,
-          //   images,
-          //   price,
-          //   rating,
-          //   stock,
-          //   thumbnail,
-          //   title,
-          // } = items;
-          // return (
-          //   <article key={id} className="flex flex-col my-4 shadow-lg">
-          //     <img
-          //       src={thumbnail}
-          //       alt={title}
-          //       className="w-full h-60 object-cover rounded-t-md"
-          //     />
-          //     <div className="details-container p-2">
-          //       {/* <div className="item-header flex items-center justify-between w-full mb-4"> */}
-          //       <h3 className="item-name text-xl">{title}</h3>
-          //       {/* </div> */}
-          //       <p className="item-desc">{description}</p>
-          //       <p className="item-price font-extrabold text-xl tracking-wide text-white bg-Dark-nude w-20 text-center p-1 rounded-md">
-          //         $ {price}
-          //       </p>
-          //     </div>
-          //   </article>
-          // );
         })}
       </section>
     </main>
