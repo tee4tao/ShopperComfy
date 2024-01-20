@@ -9,7 +9,7 @@ import { useGlobalContext } from "./context";
 import Product from "./Product.jsx";
 
 function App() {
-  const { productId, setproductId } = useGlobalContext();
+  // const { productId, setproductId } = useGlobalContext();
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
@@ -29,7 +29,7 @@ function App() {
           element: <SignUp />,
         },
         {
-          path: `product/${productId}`,
+          path: `home/${loadedUser.username}/product/:id`,
           element: <Product />,
         },
       ],
