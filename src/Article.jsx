@@ -39,7 +39,7 @@ const Article = ({ items }) => {
   return (
     <article
       key={id}
-      className="item-container flex flex-col my-4 shadow-lg hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white cursor-pointer relative"
+      className="item-container flex flex-col my-4 shadow-lg hover:shadow-2xl hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white cursor-pointer relative"
     >
       <Link to={`product/${id}`}>
         <img

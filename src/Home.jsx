@@ -9,7 +9,7 @@ const Home = () => {
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
-  const getProduct = async (id) => {
+  const getProducts = async () => {
     try {
       const resp = await fetch(`https://dummyjson.com/products`);
       if (!resp.ok) {
@@ -27,7 +27,7 @@ const Home = () => {
     }
   };
   useEffect(() => {
-    getProduct();
+    getProducts();
   }, []);
   if (isLoading) {
     return <div className="loader"></div>;

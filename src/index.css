@@ -174,3 +174,42 @@
     align-items: start;
   }
 }
+
+.product-img.activeSlide {
+  opacity: 1;
+  transform: translateX(0);
+}
+.product-img.lastSlide {
+  transform: translateX(-100%);
+}
+.product-img.nextSlide {
+  transform: translateX(100%);
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 200px;
+  transform: translateY(-50%);
+  background: hsl(210, 22%, 49%);
+  color: white;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: grid;
+  place-items: center;
+  border-color: transparent;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.prev:hover,
+.next:hover {
+  background: hsl(21, 62%, 45%);
+}
+.prev {
+  left: 0;
+}
+.next {
+  right: 0;
+}

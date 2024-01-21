@@ -60,7 +60,7 @@ const SignUp = () => {
     return () => clearTimeout(dangerAlertTime);
   }, [danger]);
   return (
-    <main className="h-screen w-screen flex justify-center items-center">
+    <main className="h-screen w-screen flex justify-center items-center fixed">
       <section className="h-full w-full flex flex-col login-container rounded-md  justify-center items-center">
         <div className="w-4/5 h-3/4 flex flex-col justify-center items-center relative md:w-1/2">
           {danger && (
