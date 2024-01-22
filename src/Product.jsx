@@ -8,6 +8,7 @@ const Product = () => {
   const [isError, setIsError] = useState(false);
   const [errMessage, setErrMessage] = useState(``);
   const [eachProduct, setEachProduct] = useState([]);
+  const [index, setIndex] = useState(0);
   const getEachProduct = async () => {
     try {
       const resp = await fetch(`https://dummyjson.com/products/${id}`);
@@ -50,21 +51,30 @@ const Product = () => {
   return (
     <main className="h-screen w-full grid place-items-center">
       <section className="mx-1 w-5/6 max-w-4xl ease-linear duration-300 relative overflow-hidden">
+        <div className="flex">
+          {eachProduct.images.map((image, productIndex) => {
+            let position = "nextSlide";
+            if (productIndex === index) {
+              position = "activeSlide";
+            }
+            if (
+              productIndex === index - 1 ||
+              (index === 0 && productIndex === eachProduct.images.length - 1)
+            ) {
+              position = "lastSlide";
+            }
+            return (
+              <img
+                key={productIndex}
+                src={image}
+                alt={eachProduct.title}
+                className={`${position} min-w-full h-60 object-cover rounded-t-md ease-linear duration-300`}
+                // onClick={handleClick}
+              />
+            );
+          })}
+        </div>
         <article className="item-container flex flex-col my-4 shadow-lg hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white relative">
-          <div className="flex">
-            {eachProduct.images.map((image, index) => {
-              return (
-                <img
-                  key={index}
-                  src={image}
-                  alt={eachProduct.title}
-                  className="product-img w-full h-60 object-cover rounded-t-md ease-linear duration-300"
-                  // onClick={handleClick}
-                />
-              );
-            })}
-          </div>
-
           {/* <img
             src={eachProduct.thumbnail}
             alt={eachProduct.title}
@@ -84,10 +94,10 @@ const Product = () => {
             return <div>{item}</div>;
           })} */}
         </article>
-        <button className="prev">
+        <button className="prev" onClick={() => setIndex(index - 1)}>
           <FiChevronLeft />
         </button>
-        <button className="next">
+        <button className="next" onClick={() => setIndex(index + 1)}>
           <FiChevronRight />
         </button>
       </section>

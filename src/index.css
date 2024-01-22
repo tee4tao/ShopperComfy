@@ -175,17 +175,21 @@
   }
 }
 
-.product-img.activeSlide {
+.activeSlide {
   opacity: 1;
   transform: translateX(0);
 }
-.product-img.lastSlide {
+.lastSlide {
   transform: translateX(-100%);
 }
-.product-img.nextSlide {
+.nextSlide {
   transform: translateX(100%);
 }
-
+img {
+  /* opacity: 0; */
+  width: 83vw;
+  max-width: 896px;
+}
 .prev,
 .next {
   position: absolute;
