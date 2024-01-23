@@ -62,7 +62,7 @@ const Product = () => {
   return (
     <main className="h-screen w-full grid place-items-center">
       <section className="mx-1 w-5/6 max-w-4xl ease-linear duration-300 relative">
-        <article className="item-container flex flex-col my-4 shadow-lg hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white relative">
+        <article className="item-container flex flex-col my-4 shadow-lg hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white relative overflow-hidden h-96">
           <div className="flex">
             {eachProduct.images.length > 1
               ? eachProduct.images.map((image, productIndex) => {
@@ -82,7 +82,7 @@ const Product = () => {
                       key={productIndex}
                       src={image}
                       alt={eachProduct.title}
-                      className={`${position} w-full h-60 object-cover rounded-t-md ease-linear duration-300 absolute bottom-40`}
+                      className={`${position} w-full h-96 object-cover rounded-t-md ease-linear duration-300 absolute bottom-44 opacity-0`}
                       // onClick={handleClick}
                     />
                   );
@@ -93,8 +93,7 @@ const Product = () => {
                       key={productIndex}
                       src={image}
                       alt={eachProduct.title}
-                      className={`w-full h-60 object-cover rounded-t-md ease-linear duration-300 absolute bottom-40`}
-                      // onClick={handleClick}
+                      className={`w-full h-96 object-cover rounded-t-md ease-linear duration-300 absolute bottom-44`}
                     />
                   );
                 })}
@@ -126,7 +125,7 @@ const Product = () => {
             className="w-full h-60 object-cover rounded-t-md"
             // onClick={handleClick}
           /> */}
-          <div className="p-2 flex flex-col justify-between">
+          <div className="p-2 flex flex-col justify-between absolute bottom-0">
             {/* <div className="item-header flex items-center justify-between w-full mb-4"> */}
             <h3 className="item-name text-xl">{eachProduct.title}</h3>
             {/* </div> */}
