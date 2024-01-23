@@ -185,11 +185,10 @@
 .nextSlide {
   transform: translateX(100%);
 }
-img {
-  /* opacity: 0; */
+/* img {
   width: 83vw;
   max-width: 896px;
-}
+} */
 .prev,
 .next {
   position: absolute;

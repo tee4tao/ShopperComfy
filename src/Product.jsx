@@ -27,6 +27,17 @@ const Product = () => {
     }
   };
   useEffect(() => {
+    if (eachProduct.length != 0) {
+      const lastIndex = eachProduct.images.length - 1;
+      if (index < 0) {
+        setIndex(lastIndex);
+      }
+      if (index > lastIndex) {
+        setIndex(0);
+      }
+    }
+  }, [index, eachProduct]);
+  useEffect(() => {
     getEachProduct();
   }, []);
   if (isLoading) {
@@ -50,31 +61,31 @@ const Product = () => {
   }
   return (
     <main className="h-screen w-full grid place-items-center">
-      <section className="mx-1 w-5/6 max-w-4xl ease-linear duration-300 relative overflow-hidden">
-        <div className="flex">
-          {eachProduct.images.map((image, productIndex) => {
-            let position = "nextSlide";
-            if (productIndex === index) {
-              position = "activeSlide";
-            }
-            if (
-              productIndex === index - 1 ||
-              (index === 0 && productIndex === eachProduct.images.length - 1)
-            ) {
-              position = "lastSlide";
-            }
-            return (
-              <img
-                key={productIndex}
-                src={image}
-                alt={eachProduct.title}
-                className={`${position} min-w-full h-60 object-cover rounded-t-md ease-linear duration-300`}
-                // onClick={handleClick}
-              />
-            );
-          })}
-        </div>
+      <section className="mx-1 w-5/6 max-w-4xl ease-linear duration-300 relative">
         <article className="item-container flex flex-col my-4 shadow-lg hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white relative">
+          <div className="flex">
+            {eachProduct.images.map((image, productIndex) => {
+              let position = "nextSlide";
+              if (productIndex === index) {
+                position = "activeSlide";
+              }
+              if (
+                productIndex === index - 1 ||
+                (index === 0 && productIndex === eachProduct.images.length - 1)
+              ) {
+                position = "lastSlide";
+              }
+              return (
+                <img
+                  key={productIndex}
+                  src={image}
+                  alt={eachProduct.title}
+                  className={`${position} w-full h-60 object-cover rounded-t-md ease-linear duration-300 absolute bottom-40`}
+                  // onClick={handleClick}
+                />
+              );
+            })}
+          </div>
           {/* <img
             src={eachProduct.thumbnail}
             alt={eachProduct.title}
