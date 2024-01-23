@@ -64,7 +64,41 @@ const Product = () => {
       <section className="mx-1 w-5/6 max-w-4xl ease-linear duration-300 relative">
         <article className="item-container flex flex-col my-4 shadow-lg hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white relative">
           <div className="flex">
-            {eachProduct.images.map((image, productIndex) => {
+            {eachProduct.images.length > 1
+              ? eachProduct.images.map((image, productIndex) => {
+                  let position = "nextSlide";
+                  if (productIndex === index) {
+                    position = "activeSlide";
+                  }
+                  if (
+                    productIndex === index - 1 ||
+                    (index === 0 &&
+                      productIndex === eachProduct.images.length - 1)
+                  ) {
+                    position = "lastSlide";
+                  }
+                  return (
+                    <img
+                      key={productIndex}
+                      src={image}
+                      alt={eachProduct.title}
+                      className={`${position} w-full h-60 object-cover rounded-t-md ease-linear duration-300 absolute bottom-40`}
+                      // onClick={handleClick}
+                    />
+                  );
+                })
+              : eachProduct.images.map((image, productIndex) => {
+                  return (
+                    <img
+                      key={productIndex}
+                      src={image}
+                      alt={eachProduct.title}
+                      className={`w-full h-60 object-cover rounded-t-md ease-linear duration-300 absolute bottom-40`}
+                      // onClick={handleClick}
+                    />
+                  );
+                })}
+            {/* {eachProduct.images.map((image, productIndex) => {
               let position = "nextSlide";
               if (productIndex === index) {
                 position = "activeSlide";
@@ -84,7 +118,7 @@ const Product = () => {
                   // onClick={handleClick}
                 />
               );
-            })}
+            })} */}
           </div>
           {/* <img
             src={eachProduct.thumbnail}
