@@ -71,7 +71,7 @@ const Product = () => {
   return (
     <main className="h-screen w-full grid place-items-center">
       <section className="mx-1 w-5/6 max-w-4xl ease-linear duration-300 relative">
-        <article className="item-container flex flex-col my-4 shadow-lg hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white relative overflow-hidden">
+        <article className="item-container flex flex-col my-4 shadow-lg ease-linear duration-300 rounded-md relative overflow-hidden hover:shadow-2xl">
           <div className="flex justify-center">
             {eachProduct.images.length > 1
               ? eachProduct.images.map((image, productIndex) => {
