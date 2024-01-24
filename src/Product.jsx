@@ -38,6 +38,15 @@ const Product = () => {
     }
   }, [index, eachProduct]);
   useEffect(() => {
+    let slider = setInterval(() => {
+      setIndex(index + 1);
+    }, 2000);
+    return () => {
+      clearInterval(slider);
+    };
+  }, [index]);
+
+  useEffect(() => {
     getEachProduct();
   }, []);
   if (isLoading) {
@@ -62,8 +71,8 @@ const Product = () => {
   return (
     <main className="h-screen w-full grid place-items-center">
       <section className="mx-1 w-5/6 max-w-4xl ease-linear duration-300 relative">
-        <article className="item-container flex flex-col my-4 shadow-lg hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white relative overflow-hidden h-96">
-          <div className="flex">
+        <article className="item-container flex flex-col my-4 shadow-lg hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white relative overflow-hidden">
+          <div className="flex justify-center">
             {eachProduct.images.length > 1
               ? eachProduct.images.map((image, productIndex) => {
                   let position = "nextSlide";
@@ -82,7 +91,7 @@ const Product = () => {
                       key={productIndex}
                       src={image}
                       alt={eachProduct.title}
-                      className={`${position} w-full h-96 object-cover rounded-t-md ease-linear duration-300 absolute bottom-44 opacity-0`}
+                      className={`${position} w-96 object-cover rounded-t-md ease-linear duration-300 absolute bottom-44 opacity-0`}
                       // onClick={handleClick}
                     />
                   );
@@ -93,7 +102,7 @@ const Product = () => {
                       key={productIndex}
                       src={image}
                       alt={eachProduct.title}
-                      className={`w-full h-96 object-cover rounded-t-md ease-linear duration-300 absolute bottom-44`}
+                      className={`w-96 object-cover rounded-t-md ease-linear duration-300 absolute bottom-44`}
                     />
                   );
                 })}
@@ -125,7 +134,7 @@ const Product = () => {
             className="w-full h-60 object-cover rounded-t-md"
             // onClick={handleClick}
           /> */}
-          <div className="p-2 flex flex-col justify-between absolute bottom-0">
+          <div className="p-2 flex flex-col justify-between absolute -bottom-12">
             {/* <div className="item-header flex items-center justify-between w-full mb-4"> */}
             <h3 className="item-name text-xl">{eachProduct.title}</h3>
             {/* </div> */}
@@ -138,12 +147,22 @@ const Product = () => {
             return <div>{item}</div>;
           })} */}
         </article>
-        <button className="prev" onClick={() => setIndex(index - 1)}>
+        {eachProduct.images.length > 1 && (
+          <>
+            <button className="prev" onClick={() => setIndex(index - 1)}>
+              <FiChevronLeft />
+            </button>
+            <button className="next" onClick={() => setIndex(index + 1)}>
+              <FiChevronRight />
+            </button>
+          </>
+        )}
+        {/* <button className="prev" onClick={() => setIndex(index - 1)}>
           <FiChevronLeft />
         </button>
         <button className="next" onClick={() => setIndex(index + 1)}>
           <FiChevronRight />
-        </button>
+        </button> */}
       </section>
     </main>
   );

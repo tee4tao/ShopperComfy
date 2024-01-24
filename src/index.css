@@ -186,8 +186,7 @@
   transform: translateX(100%);
 }
 /* img {
-  width: 83vw;
-  max-width: 896px;
+  width: 24rem;
 } */
 .prev,
 .next {
@@ -211,8 +210,8 @@
   background: hsl(21, 62%, 45%);
 }
 .prev {
-  left: 0;
+  left: -1.5rem;
 }
 .next {
-  right: 0;
+  right: -1.5rem;
 }
