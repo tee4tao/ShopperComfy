@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import StarRatings from "./Star-ratings";
 
 const Product = () => {
   let { id } = useParams();
@@ -68,10 +69,11 @@ const Product = () => {
       </div>
     );
   }
+
   return (
-    <main className="h-screen w-full grid place-items-center">
+    <main className="h-screen w-full grid place-items-center ">
       <section className="mx-1 w-5/6 max-w-4xl ease-linear duration-300 relative">
-        <article className="item-container flex flex-col my-4 shadow-lg ease-linear duration-300 rounded-md relative overflow-hidden hover:shadow-2xl">
+        <article className="item-container flex flex-col  my-4 shadow-lg ease-linear duration-300 rounded-md relative overflow-hidden hover:shadow-2xl">
           <div className="flex justify-center">
             {eachProduct.images.length > 1
               ? eachProduct.images.map((image, productIndex) => {
@@ -106,46 +108,26 @@ const Product = () => {
                     />
                   );
                 })}
-            {/* {eachProduct.images.map((image, productIndex) => {
-              let position = "nextSlide";
-              if (productIndex === index) {
-                position = "activeSlide";
-              }
-              if (
-                productIndex === index - 1 ||
-                (index === 0 && productIndex === eachProduct.images.length - 1)
-              ) {
-                position = "lastSlide";
-              }
-              return (
-                <img
-                  key={productIndex}
-                  src={image}
-                  alt={eachProduct.title}
-                  className={`${position} w-full h-60 object-cover rounded-t-md ease-linear duration-300 absolute bottom-40`}
-                  // onClick={handleClick}
-                />
-              );
-            })} */}
           </div>
-          {/* <img
-            src={eachProduct.thumbnail}
-            alt={eachProduct.title}
-            className="w-full h-60 object-cover rounded-t-md"
-            // onClick={handleClick}
-          /> */}
-          <div className="p-2 flex flex-col justify-between absolute -bottom-12">
+
+          <div className="p-2 flex flex-col justify-between absolute -bottom-0">
             {/* <div className="item-header flex items-center justify-between w-full mb-4"> */}
             <h3 className="item-name text-xl">{eachProduct.title}</h3>
             {/* </div> */}
             <p className="item-desc">{eachProduct.description}</p>
-            <p className="item-price font-extrabold text-xl tracking-wide text-white bg-Dark-nude w-20 text-center p-1 rounded-md mb-16">
+            <p className="item-price font-extrabold text-xl tracking-wide text-white bg-Dark-nude w-20 text-center p-1 rounded-md">
               $ {eachProduct.price}
             </p>
+            <div className="flex items-center text-Dark-nude">
+              <StarRatings
+                rating={eachProduct.rating}
+                isSelectable={false}
+                isAggregateRating={true}
+                numOfStars={5}
+              />
+              <span className="font-bold">({eachProduct.rating})</span>
+            </div>
           </div>
-          {/* {eachProduct.images.map((item) => {
-            return <div>{item}</div>;
-          })} */}
         </article>
         {eachProduct.images.length > 1 && (
           <>
