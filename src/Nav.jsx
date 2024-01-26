@@ -1,6 +1,7 @@
 import { React, useRef, useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
+import { IoCartOutline } from "react-icons/io5";
 
 const Nav = () => {
   const [showLinks, setShowLinks] = useState(false);
@@ -25,6 +26,9 @@ const Nav = () => {
           <div className="nav-header flex justify-between items-center w-full p-2 md:p-0">
             <Link to={`home/${loadedUser.username}`} className="nav-logo">
               ShopperComfy
+            </Link>
+            <Link to={"cart"} className="md:hidden text-3xl">
+              <IoCartOutline />
             </Link>
             <button
               className="toggle-btn md:hidden"

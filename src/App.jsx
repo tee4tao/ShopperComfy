@@ -7,6 +7,7 @@ import SignUp from "./SignUp.jsx";
 import Error from "./Error.jsx";
 import { useGlobalContext } from "./context";
 import Product from "./Product.jsx";
+import Cart from "./Cart.jsx";
 
 function App() {
   // const { productId, setproductId } = useGlobalContext();
@@ -31,6 +32,10 @@ function App() {
         {
           path: `home/${loadedUser.username}/product/:id`,
           element: <Product />,
+        },
+        {
+          path: "cart",
+          element: <Cart />,
         },
       ],
     },

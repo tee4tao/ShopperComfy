@@ -11,6 +11,11 @@ const Product = () => {
   const [errMessage, setErrMessage] = useState(``);
   const [eachProduct, setEachProduct] = useState([]);
   const [index, setIndex] = useState(0);
+  const [productList, setProductList] = useState([]);
+  const addToCart = () => {
+    setProductList([eachProduct]);
+    console.log(productList);
+  };
   const getEachProduct = async () => {
     try {
       const resp = await fetch(`https://dummyjson.com/products/${id}`);
@@ -28,6 +33,12 @@ const Product = () => {
       setIsLoading(false);
     }
   };
+  useEffect(() => {
+    if (productList.length != 0) {
+      localStorage.setItem(`productList`, JSON.stringify(productList));
+      // navigateTo("/"); // to redirect to the route(login page) after submission of the form
+    }
+  }, [productList]);
   useEffect(() => {
     if (eachProduct.length != 0) {
       const lastIndex = eachProduct.images.length - 1;
@@ -146,7 +157,10 @@ const Product = () => {
         <button className="next" onClick={() => setIndex(index + 1)}>
           <FiChevronRight />
         </button> */}
-        <button className="border-2 w-48 mx-auto bg-Dark-nude text-white h-10 rounded-md p-2 font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white uppercase">
+        <button
+          className="border-2 w-48 mx-auto bg-Dark-nude text-white h-10 rounded-md p-2 font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white uppercase"
+          onClick={addToCart}
+        >
           <MdAddShoppingCart className="text-2xl" />
           add to cart
         </button>
