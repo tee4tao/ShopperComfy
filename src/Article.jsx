@@ -62,12 +62,12 @@ const Article = ({ items }) => {
           </p>
         </div>
       </Link>
-      <button
+      {/* <button
         onClick={handleAdd}
         className="border-2  mx-auto bg-Dark-nude text-white h-10 rounded-md p-2 font-bold md:text-xl flex items-center justify-center ease-linear duration-300 hover:text-Dark-nude hover:bg-white uppercase absolute bottom-0"
       >
         add to cart
-      </button>
+      </button> */}
     </article>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import { MdAddShoppingCart } from "react-icons/md";
 import StarRatings from "./Star-ratings";
 
 const Product = () => {
@@ -145,6 +146,10 @@ const Product = () => {
         <button className="next" onClick={() => setIndex(index + 1)}>
           <FiChevronRight />
         </button> */}
+        <button className="border-2 w-48 mx-auto bg-Dark-nude text-white h-10 rounded-md p-2 font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white uppercase">
+          <MdAddShoppingCart className="text-2xl" />
+          add to cart
+        </button>
       </section>
     </main>
   );
