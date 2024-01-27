@@ -2,11 +2,13 @@ import { React, useRef, useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
+import { useGlobalContext } from "./context";
 
 const Nav = () => {
   const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
+  const { cartItemsNumber } = useGlobalContext();
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
@@ -27,9 +29,14 @@ const Nav = () => {
             <Link to={`home/${loadedUser.username}`} className="nav-logo">
               ShopperComfy
             </Link>
-            <Link to={"cart"} className="md:hidden text-3xl">
-              <IoCartOutline />
-            </Link>
+            <div className="relative w-11">
+              <Link to={"cart"} className="md:hidden text-3xl">
+                <IoCartOutline />
+              </Link>
+              <div className="md:hidden absolute top-0 right-0 bg-white rounded-full w-5 h-5 text-xl text-Dark-nude flex justify-center items-center">
+                {cartItemsNumber}
+              </div>
+            </div>
             <button
               className="toggle-btn md:hidden"
               onClick={() => setShowLinks(!showLinks)}
@@ -56,6 +63,14 @@ const Nav = () => {
               </div>
               <div className="capitalize text-lg text-Dark-nude w-screen  hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2">
                 Account
+              </div>
+              <div className="relative w-11">
+                <Link to={"cart"} className="text-3xl text-white">
+                  <IoCartOutline />
+                </Link>
+                <div className="absolute top-0 right-0 bg-white rounded-full w-5 h-5 text-xl text-Dark-nude flex justify-center items-center">
+                  {cartItemsNumber}
+                </div>
               </div>
             </div>
           </div>

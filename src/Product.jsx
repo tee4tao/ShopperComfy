@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { MdAddShoppingCart } from "react-icons/md";
+import { FaTrash } from "react-icons/fa";
 import StarRatings from "./Star-ratings";
 import { useGlobalContext } from "./context";
 
@@ -12,6 +13,7 @@ const Product = () => {
   const [errMessage, setErrMessage] = useState(``);
   // const [eachProduct, setEachProduct] = useState([]);
   const [index, setIndex] = useState(0);
+  const [cartItem, setCartItem] = useState(true);
   // const [productList, setProductList] = useState([]);
   const {
     eachProduct,
@@ -24,6 +26,15 @@ const Product = () => {
   const addToCart = () => {
     setProductList([...productList, eachProduct]);
     console.log(productList);
+    setCartItem(!cartItem);
+  };
+  const removeFromCart = (id) => {
+    setProductList((productList) => {
+      return productList.filter((product) => {
+        return product.id !== id;
+      });
+    });
+    setCartItem(!cartItem);
   };
   const getEachProduct = async () => {
     try {
@@ -47,6 +58,17 @@ const Product = () => {
       localStorage.setItem(`productList`, JSON.stringify(productList));
       // navigateTo("/"); // to redirect to the route(login page) after submission of the form
     }
+    const loadedCart = localStorage.getItem("productList")
+      ? JSON.parse(localStorage.getItem("productList"))
+      : []; // To get the items saved in the local storage
+    if (loadedCart.length > 0) {
+      setCartItemsNumber(loadedCart.length);
+    } else {
+      setCartItemsNumber(0);
+    }
+    console.log(loadedCart);
+    // : setCartItemsNumber(0);
+    // setCartItemsNumber(loadedCart.length);
   }, [productList]);
   useEffect(() => {
     if (eachProduct.length != 0) {
@@ -166,13 +188,30 @@ const Product = () => {
         <button className="next" onClick={() => setIndex(index + 1)}>
           <FiChevronRight />
         </button> */}
-        <button
-          className="border-2 w-48 mx-auto bg-Dark-nude text-white h-10 rounded-md p-2 font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white uppercase"
-          onClick={addToCart}
-        >
-          <MdAddShoppingCart className="text-2xl" />
-          add to cart
-        </button>
+        {cartItem ? (
+          <button
+            className="border-2 w-48 mx-auto bg-Dark-nude text-white h-10 rounded-md p-2 font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white uppercase"
+            onClick={addToCart}
+          >
+            <MdAddShoppingCart className="text-2xl" />
+            add to cart
+          </button>
+        ) : (
+          <button
+            className="border-2 w-64 mx-auto bg-Dark-nude text-white h-10 rounded-md p-2 font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white uppercase"
+            onClick={() => removeFromCart(eachProduct.id)}
+          >
+            <FaTrash className="text-2xl" />
+            remove from cart
+          </button>
+        )}
+        {/* <button
+           className="border-2 w-48 mx-auto bg-Dark-nude text-white h-10 rounded-md p-2 font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white uppercase"
+           onClick={addToCart}
+         >
+           <MdAddShoppingCart className="text-2xl" />
+           add to cart
+         </button> */}
       </section>
     </main>
   );
