@@ -3,17 +3,26 @@ import { Link, useParams } from "react-router-dom";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { MdAddShoppingCart } from "react-icons/md";
 import StarRatings from "./Star-ratings";
+import { useGlobalContext } from "./context";
 
 const Product = () => {
   let { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [errMessage, setErrMessage] = useState(``);
-  const [eachProduct, setEachProduct] = useState([]);
+  // const [eachProduct, setEachProduct] = useState([]);
   const [index, setIndex] = useState(0);
-  const [productList, setProductList] = useState([]);
+  // const [productList, setProductList] = useState([]);
+  const {
+    eachProduct,
+    setEachProduct,
+    productList,
+    setProductList,
+    cartItemsNumber,
+    setCartItemsNumber,
+  } = useGlobalContext();
   const addToCart = () => {
-    setProductList([eachProduct]);
+    setProductList([...productList, eachProduct]);
     console.log(productList);
   };
   const getEachProduct = async () => {

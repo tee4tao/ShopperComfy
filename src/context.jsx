@@ -5,6 +5,9 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [productId, setProductId] = useState(null);
+  const [eachProduct, setEachProduct] = useState([]);
+  const [productList, setProductList] = useState([]);
+  const [cartItemsNumber, setCartItemsNumber] = useState(0);
   return (
     <AppContext.Provider
       value={{
@@ -12,6 +15,12 @@ export const AppProvider = ({ children }) => {
         setUsername,
         productId,
         setProductId,
+        eachProduct,
+        setEachProduct,
+        productList,
+        setProductList,
+        cartItemsNumber,
+        setCartItemsNumber,
       }}
     >
       {children}
