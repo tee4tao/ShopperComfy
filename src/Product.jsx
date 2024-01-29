@@ -32,11 +32,11 @@ const Product = () => {
     // const loadedCart = localStorage.getItem("productList")
     //   ? JSON.parse(localStorage.getItem("productList"))
     //   : []; // To get the items saved in the local storage
-    // setProductList((loadedCart) => {
-    //   return loadedCart.filter((product) => {
-    //     return product.id !== id;
-    //   });
-    // });
+    setProductList((products) => {
+      return products.filter((items) => {
+        return items.id !== id;
+      });
+    });
     setCartItem(!cartItem);
   };
   const getEachProduct = async () => {
