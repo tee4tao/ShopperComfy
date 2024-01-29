@@ -16,7 +16,7 @@ const Home = () => {
         throw new Error(`Something went wrong, ${resp.status}`);
       }
       let product = await resp.json();
-      console.log(product);
+      // console.log(product);
       setProducts(product);
       setIsLoading(false);
     } catch (err) {

@@ -25,15 +25,18 @@ const Product = () => {
   } = useGlobalContext();
   const addToCart = () => {
     setProductList([...productList, eachProduct]);
-    console.log(productList);
+    // console.log(productList);
     setCartItem(!cartItem);
   };
   const removeFromCart = (id) => {
-    setProductList((productList) => {
-      return productList.filter((product) => {
-        return product.id !== id;
-      });
-    });
+    // const loadedCart = localStorage.getItem("productList")
+    //   ? JSON.parse(localStorage.getItem("productList"))
+    //   : []; // To get the items saved in the local storage
+    // setProductList((loadedCart) => {
+    //   return loadedCart.filter((product) => {
+    //     return product.id !== id;
+    //   });
+    // });
     setCartItem(!cartItem);
   };
   const getEachProduct = async () => {
@@ -54,6 +57,12 @@ const Product = () => {
     }
   };
   useEffect(() => {
+    const loadedCart = localStorage.getItem("productList")
+      ? JSON.parse(localStorage.getItem("productList"))
+      : []; // To get the items saved in the local storage
+    setProductList(loadedCart); //to update the productList with the items in the localStorage after reloading the page
+  }, []);
+  useEffect(() => {
     if (productList.length != 0) {
       localStorage.setItem(`productList`, JSON.stringify(productList));
       // navigateTo("/"); // to redirect to the route(login page) after submission of the form
@@ -62,13 +71,11 @@ const Product = () => {
       ? JSON.parse(localStorage.getItem("productList"))
       : []; // To get the items saved in the local storage
     if (loadedCart.length > 0) {
-      setCartItemsNumber(loadedCart.length);
+      setCartItemsNumber(loadedCart.length); //update the cart number using the length of the items in the localstorage
     } else {
-      setCartItemsNumber(0);
+      setCartItemsNumber(0); //if there's no item in the localstorage, then we make our cart number 0
     }
-    console.log(loadedCart);
-    // : setCartItemsNumber(0);
-    // setCartItemsNumber(loadedCart.length);
+    // console.log(loadedCart);
   }, [productList]);
   useEffect(() => {
     if (eachProduct.length != 0) {

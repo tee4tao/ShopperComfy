@@ -8,10 +8,21 @@ const Nav = () => {
   const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
-  const { cartItemsNumber } = useGlobalContext();
+  const { cartItemsNumber, setCartItemsNumber } = useGlobalContext();
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
+  useEffect(() => {
+    const loadedCart = localStorage.getItem("productList")
+      ? JSON.parse(localStorage.getItem("productList"))
+      : []; // To get the items saved in the local storage
+    if (loadedCart.length > 0) {
+      setCartItemsNumber(loadedCart.length);
+    } else {
+      setCartItemsNumber(0);
+    }
+  }, [cartItemsNumber]);
+
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
     if (showLinks) {
@@ -69,6 +80,9 @@ const Nav = () => {
                   <IoCartOutline />
                 </Link>
                 <div className="absolute top-0 right-0 bg-white rounded-full w-5 h-5 text-xl text-Dark-nude flex justify-center items-center">
+                  {/* {loadedCart.length > 0
+                    ? setCartItemsNumber(loadedCart.length)
+                    : setCartItemsNumber(0)} */}
                   {cartItemsNumber}
                 </div>
               </div>
