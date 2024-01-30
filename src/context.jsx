@@ -8,6 +8,7 @@ export const AppProvider = ({ children }) => {
   const [eachProduct, setEachProduct] = useState([]);
   const [productList, setProductList] = useState([]);
   const [cartItemsNumber, setCartItemsNumber] = useState(0);
+  const [cartQuantity, setCartQuantity] = useState(0);
   return (
     <AppContext.Provider
       value={{
@@ -21,6 +22,8 @@ export const AppProvider = ({ children }) => {
         setProductList,
         cartItemsNumber,
         setCartItemsNumber,
+        cartQuantity,
+        setCartQuantity,
       }}
     >
       {children}
