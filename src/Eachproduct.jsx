@@ -91,7 +91,7 @@ const Eachproduct = ({
         <button className="next" onClick={() => setIndex(index + 1)}>
           <FiChevronRight />
         </button> */}
-      <div className="flex justify-between items-center w-48 mx-auto h-10">
+      {/* <div className="flex justify-between items-center w-48 mx-auto h-10">
         <button className="" onClick={decreaseQuantity}>
           <FaMinusSquare className="h-6 w-6 text-Dark-nude ease-linear duration-300 hover:bg-Dark-nude hover:text-white" />
         </button>
@@ -101,7 +101,7 @@ const Eachproduct = ({
         <button onClick={increaseQuantity}>
           <FaPlusSquare className="h-6 w-6 text-Dark-nude ease-linear duration-300 hover:bg-Dark-nude hover:text-white" />
         </button>
-      </div>
+      </div> */}
       {cartItem ? (
         <button
           className="border-2 w-48 mx-auto bg-Dark-nude text-white h-10 rounded-md p-2 font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white uppercase"

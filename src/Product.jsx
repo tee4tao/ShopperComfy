@@ -47,7 +47,11 @@ const Product = () => {
   useEffect(() => {
     const loadedQuantity = parseInt(localStorage.getItem(`cartQuantity`));
     // console.log(typeof parseInt(loadedQuantity));
-    setCartQuantity(loadedQuantity);
+    if (loadedQuantity) {
+      setCartQuantity(loadedQuantity);
+    } else {
+      setCartQuantity(0);
+    }
   }, []);
   const addToCart = () => {
     setProductList([...productList, eachProduct]);
