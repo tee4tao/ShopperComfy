@@ -220,3 +220,6 @@
 .next {
   right: -1.5rem;
 }
+.remove-btn {
+  padding: 3px;
+}

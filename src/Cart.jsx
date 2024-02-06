@@ -36,17 +36,19 @@ const Cart = () => {
                   className="h-20 w-20 object-cover"
                 />
                 <div className="item-details">
-                  <h4 className="item-name">{product.title}</h4>
-                  <p className="item-price">{product.price}</p>
-                  <button className="remove-btn">remove</button>
+                  <h4 className="item-name text-xl">{product.title}</h4>
+                  <p className="item-price font-semibold">${product.price}</p>
+                  <button className="remove-btn border-4 text-sm rounded-xl text-white bg-Dark-nude hover:bg-white hover:text-Dark-nude duration-300 ease-linear mt-2">
+                    Remove
+                  </button>
                 </div>
               </div>
               <div className="flex flex-col justify-center items-center">
-                <button className="amount-btn">
+                <button className="amount-btn text-Dark-nude duration-300 ease-linear text-xl hover:text-black">
                   <FaAngleUp />
                 </button>
                 <div className="amount">1</div>
-                <button className="amount-btn">
+                <button className="amount-btn text-Dark-nude duration-300 ease-linear text-xl hover:text-black">
                   <FaAngleDown />
                 </button>
               </div>
