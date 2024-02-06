@@ -1,15 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaCartPlus, FaAngleUp, FaAngleDown } from "react-icons/fa";
+import { useGlobalContext } from "./context";
 
 const Cart = () => {
+  const {
+    eachProduct,
+    setEachProduct,
+    productList,
+    setProductList,
+    cartItemsNumber,
+    setCartItemsNumber,
+  } = useGlobalContext();
+  const removeFromCart = (id) => {
+    setProductList((products) => {
+      return products.filter((items) => {
+        return items.id !== id;
+      });
+    });
+  };
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
   const loadedCart = localStorage.getItem("productList")
     ? JSON.parse(localStorage.getItem("productList"))
     : []; // To get the items saved in the local storage
-  console.log(loadedCart);
+  let uniqueCategory = [...new Map(loadedCart.map((m) => [m.id, m])).values()];
+  // console.log(uniqueCategory);
+  // console.log(loadedCart);
   if (loadedCart.length === 0) {
     return (
       <main className="h-screen w-full flex flex-col items-center justify-center">
@@ -23,7 +41,7 @@ const Cart = () => {
   return (
     <main className=" w-full grid place-items-center mt-8">
       <section className="flex flex-col items-center w-full">
-        {loadedCart.map((product) => {
+        {uniqueCategory.map((product) => {
           return (
             <article
               key={product.id}
@@ -38,7 +56,10 @@ const Cart = () => {
                 <div className="item-details">
                   <h4 className="item-name text-xl">{product.title}</h4>
                   <p className="item-price font-semibold">${product.price}</p>
-                  <button className="remove-btn border-4 text-sm rounded-xl text-white bg-Dark-nude hover:bg-white hover:text-Dark-nude duration-300 ease-linear mt-2">
+                  <button
+                    className="remove-btn border-4 text-sm rounded-xl text-white bg-Dark-nude hover:bg-white hover:text-Dark-nude duration-300 ease-linear mt-2"
+                    onClick={() => removeFromCart(product.id)}
+                  >
                     Remove
                   </button>
                 </div>

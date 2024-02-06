@@ -16,8 +16,11 @@ const Nav = () => {
     const loadedCart = localStorage.getItem("productList")
       ? JSON.parse(localStorage.getItem("productList"))
       : []; // To get the items saved in the local storage
-    if (loadedCart.length > 0) {
-      setCartItemsNumber(loadedCart.length);
+    let uniqueCategory = [
+      ...new Map(loadedCart.map((m) => [m.id, m])).values(),
+    ];
+    if (uniqueCategory.length > 0) {
+      setCartItemsNumber(uniqueCategory.length);
     } else {
       setCartItemsNumber(0);
     }
