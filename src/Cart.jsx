@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaCartPlus, FaAngleUp, FaAngleDown } from "react-icons/fa";
 import { useGlobalContext } from "./context";
@@ -12,13 +12,22 @@ const Cart = () => {
     cartItemsNumber,
     setCartItemsNumber,
   } = useGlobalContext();
-  const loadedUser = localStorage.getItem("userDetail")
-    ? JSON.parse(localStorage.getItem("userDetail"))
-    : [];
+  const [test, setTest] = useState([]);
   const loadedCart = localStorage.getItem("productList")
     ? JSON.parse(localStorage.getItem("productList"))
     : []; // To get the items saved in the local storage
-  let uniqueCategory = [...new Map(loadedCart.map((m) => [m.id, m])).values()];
+  useEffect(() => {
+    // const loadedCart = localStorage.getItem("productList")
+    //   ? JSON.parse(localStorage.getItem("productList"))
+    //   : []; // To get the items saved in the local storage
+    let uniqueCategory = [
+      ...new Map(loadedCart.map((m) => [m.id, m])).values(),
+    ];
+    setTest(uniqueCategory);
+  }, []);
+  const loadedUser = localStorage.getItem("userDetail")
+    ? JSON.parse(localStorage.getItem("userDetail"))
+    : [];
   // console.log(uniqueCategory);
   // console.log(loadedCart);
   const removeFromCart = (id) => {
@@ -30,6 +39,7 @@ const Cart = () => {
       loadedCart.splice(index, 1);
     }
     localStorage.setItem(`productList`, JSON.stringify(loadedCart));
+    setTest(loadedCart);
     // let newGoods = loadedCart.filter((item) => {
     //   return item.id !== id;
     // });
@@ -56,7 +66,7 @@ const Cart = () => {
   return (
     <main className=" w-full grid place-items-center mt-8">
       <section className="flex flex-col items-center w-full">
-        {uniqueCategory.map((product) => {
+        {test.map((product) => {
           return (
             <article
               key={product.id}
