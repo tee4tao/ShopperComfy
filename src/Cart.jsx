@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaCartPlus, FaAngleUp, FaAngleDown } from "react-icons/fa";
 import { useGlobalContext } from "./context";
@@ -12,13 +12,6 @@ const Cart = () => {
     cartItemsNumber,
     setCartItemsNumber,
   } = useGlobalContext();
-  const removeFromCart = (id) => {
-    setProductList((products) => {
-      return products.filter((items) => {
-        return items.id !== id;
-      });
-    });
-  };
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
@@ -28,6 +21,28 @@ const Cart = () => {
   let uniqueCategory = [...new Map(loadedCart.map((m) => [m.id, m])).values()];
   // console.log(uniqueCategory);
   // console.log(loadedCart);
+  const removeFromCart = (id) => {
+    const loadedCart = localStorage.getItem("productList")
+      ? JSON.parse(localStorage.getItem("productList"))
+      : [];
+    const index = loadedCart.findIndex((product) => product.id === id);
+    if (index > -1) {
+      loadedCart.splice(index, 1);
+    }
+    localStorage.setItem(`productList`, JSON.stringify(loadedCart));
+    // let newGoods = loadedCart.filter((item) => {
+    //   return item.id !== id;
+    // });
+    // console.log(newGoods);
+    // useEffect(() => {
+    // localStorage.setItem(`productList`, JSON.stringify(newGoods));
+    // }, []);
+    // setProductList((products) => {
+    //   return products.filter((items) => {
+    //     return items.id !== id;
+    //   });
+    // });
+  };
   if (loadedCart.length === 0) {
     return (
       <main className="h-screen w-full flex flex-col items-center justify-center">
