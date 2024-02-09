@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaCartPlus, FaAngleUp, FaAngleDown } from "react-icons/fa";
 
 const CartItem = ({
@@ -7,17 +7,16 @@ const CartItem = ({
   title,
   price,
   removeFromCart,
-  //   setItemQuantity,
-  //   itemQuantity,
   test,
   setTest,
+  totalCost,
+  setTotalCost,
 }) => {
   let [itemQuantity, setItemQuantity] = useState(1);
   let handleIncrease = (id) => {
     let increase = test.find((item) => {
       return item.id == id;
     });
-    console.log(increase);
     if (increase.id === id) {
       setItemQuantity((itemQuantity += 1));
     }
@@ -42,6 +41,23 @@ const CartItem = ({
       setTest(loadedCart);
     }
   };
+  totalCost = test.reduce((acc, curr) => {
+    console.log(itemQuantity);
+    acc += curr.price * itemQuantity;
+    console.log(acc);
+    return acc;
+    // return Math.round((acc + Number.EPSILON) * 100) / 100; // Math.round((num + Number.EPSILON) * 100) / 100 will round-off my value to 2dp
+  }, 0);
+  // itemQuantity = test.reduce((acc, curr) => {
+  //   acc += itemQuantity;
+  //   return acc; // Math.round((num + Number.EPSILON) * 100) / 100 will round-off my value to 2dp
+  // }, 0);
+  //   console.log(totalAmount);
+
+  useEffect(() => {
+    setTotalCost(totalCost);
+    // setTotalAmount(totalAmount);
+  }, [totalCost]); //To resolve the warning(Cannot update a component while rendering a different component), I wrap the logic that updates the state(totalCost) in the useEffect hook.
   return (
     <article className="flex justify-between items-center mb-8 w-11/12">
       <div className="item-header flex items-center gap-4">

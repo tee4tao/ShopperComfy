@@ -15,6 +15,7 @@ const Cart = () => {
   } = useGlobalContext();
   const [test, setTest] = useState([]);
   const [itemQuantity, setItemQuantity] = useState(1);
+  let [totalCost, setTotalCost] = useState(0);
   const loadedCart = localStorage.getItem("productList")
     ? JSON.parse(localStorage.getItem("productList"))
     : []; // To get the items saved in the local storage
@@ -57,7 +58,7 @@ const Cart = () => {
   };
   if (loadedCart.length === 0) {
     return (
-      <main className="h-screen w-full flex flex-col items-center justify-center fixed">
+      <main className="h-screen w-full flex flex-col items-center justify-center">
         <div className="text-5xl font-bold text-Dark-nude">Cart is empty</div>
         <button className=" border-4 text-white text-xl w-32 bg-Dark-nude p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-Dark-nude mt-8">
           <Link to={`/home/${loadedUser.username}`}>Home Page</Link>
@@ -78,43 +79,18 @@ const Cart = () => {
               itemQuantity={itemQuantity}
               test={test}
               setTest={setTest}
+              totalCost={totalCost}
+              setTotalCost={setTotalCost}
             />
-            // <article
-            //   key={product.id}
-            //   className="flex justify-between items-center mb-8 w-11/12"
-            // >
-            //   <div className="item-header flex items-center gap-4">
-            //     <img
-            //       src={product.thumbnail}
-            //       alt={product.title}
-            //       className="h-20 w-20 object-cover"
-            //     />
-            //     <div className="item-details">
-            //       <h4 className="item-name text-xl">{product.title}</h4>
-            //       <p className="item-price font-semibold">${product.price}</p>
-            //       <button
-            //         className="remove-btn border-4 text-sm rounded-xl text-white bg-Dark-nude hover:bg-white hover:text-Dark-nude duration-300 ease-linear mt-2"
-            //         onClick={() => removeFromCart(product.id)}
-            //       >
-            //         Remove
-            //       </button>
-            //     </div>
-            //   </div>
-            //   <div className="flex flex-col justify-center items-center">
-            //     <button
-            //       className="amount-btn text-Dark-nude duration-300 ease-linear text-xl hover:text-black"
-            //       onClick={() => setItemQuantity(itemQuantity + 1)}
-            //     >
-            //       <FaAngleUp />
-            //     </button>
-            //     <div className="amount">{itemQuantity}</div>
-            //     <button className="amount-btn text-Dark-nude duration-300 ease-linear text-xl hover:text-black">
-            //       <FaAngleDown />
-            //     </button>
-            //   </div>
-            // </article>
           );
         })}
+        <div className="cart-underline h-1 w-11/12 bg-Dark-nude"></div>
+        <div className="total flex justify-between w-11/12 mt-4">
+          <div className="total-heading capitalize text-xl font-semibold">
+            total
+          </div>
+          <div className="total-cost text-xl font-semibold">${totalCost}</div>
+        </div>
       </section>
     </main>
   );
