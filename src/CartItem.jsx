@@ -42,9 +42,7 @@ const CartItem = ({
     }
   };
   totalCost = test.reduce((acc, curr) => {
-    console.log(itemQuantity);
     acc += curr.price * itemQuantity;
-    console.log(acc);
     return acc;
     // return Math.round((acc + Number.EPSILON) * 100) / 100; // Math.round((num + Number.EPSILON) * 100) / 100 will round-off my value to 2dp
   }, 0);

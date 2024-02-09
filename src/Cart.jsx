@@ -16,9 +16,14 @@ const Cart = () => {
   const [test, setTest] = useState([]);
   const [itemQuantity, setItemQuantity] = useState(1);
   let [totalCost, setTotalCost] = useState(0);
-  const loadedCart = localStorage.getItem("productList")
+  let loadedCart = localStorage.getItem("productList")
     ? JSON.parse(localStorage.getItem("productList"))
     : []; // To get the items saved in the local storage
+  const clearCart = () => {
+    // setTest([]);
+    loadedCart.length = 0;
+    console.log(loadedCart.length);
+  };
   useEffect(() => {
     // const loadedCart = localStorage.getItem("productList")
     //   ? JSON.parse(localStorage.getItem("productList"))
@@ -91,6 +96,12 @@ const Cart = () => {
           </div>
           <div className="total-cost text-xl font-semibold">${totalCost}</div>
         </div>
+        <button
+          className=" border-4 text-white text-xl w-32 bg-Dark-nude p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-Dark-nude mt-8"
+          onClick={clearCart}
+        >
+          clear cart
+        </button>
       </section>
     </main>
   );
