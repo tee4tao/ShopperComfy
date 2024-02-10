@@ -28,10 +28,13 @@ const Cart = () => {
     // const loadedCart = localStorage.getItem("productList")
     //   ? JSON.parse(localStorage.getItem("productList"))
     //   : []; // To get the items saved in the local storage
-    let uniqueCategory = [
-      ...new Map(loadedCart.map((m) => [m.id, m])).values(),
-    ];
-    setTest(uniqueCategory);
+    // let uniqueCategory = [
+    //   ...new Map(loadedCart.map((m) => [m.id, m])).values(),
+    // ];
+    let loadedCart = localStorage.getItem("productList")
+      ? JSON.parse(localStorage.getItem("productList"))
+      : []; // To get the items saved in the local storage
+    setTest(loadedCart);
   }, []);
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
@@ -61,6 +64,9 @@ const Cart = () => {
     //   });
     // });
   };
+  useEffect(() => {
+    setCartItemsNumber(test.length);
+  }, [test]);
   if (loadedCart.length === 0) {
     return (
       <main className="h-screen w-full flex flex-col items-center justify-center">

@@ -54,8 +54,19 @@ const Product = () => {
     }
   }, []);
   const addToCart = () => {
-    setProductList([...productList, eachProduct]);
-    // console.log(productList);
+    const isFound = productList.some((element) => {
+      if (element.id === eachProduct.id) {
+        return true;
+      }
+
+      return false;
+    });
+
+    console.log(isFound);
+    if (!isFound) {
+      setProductList([...productList, eachProduct]);
+    }
+    console.log(productList);
     setCartItem(!cartItem);
   };
   const removeFromCart = (id) => {
@@ -88,14 +99,6 @@ const Product = () => {
       setIsLoading(false);
     }
   };
-  // useEffect(() => {
-  //   window.localStorage.setItem(`cartItem`, cartItem);
-  // }, [cartItem]);
-  // useEffect(() => {
-  //   const value = window.localStorage.getItem(`cartItem`);
-  //   const valueParse = JSON.parse(value) ? JSON.parse(value) : false;
-  //   setCartItem(valueParse);
-  // }, []);
   useEffect(() => {
     const loadedCart = localStorage.getItem("productList")
       ? JSON.parse(localStorage.getItem("productList"))

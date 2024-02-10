@@ -19,11 +19,12 @@ const Nav = () => {
     let uniqueCategory = [
       ...new Map(loadedCart.map((m) => [m.id, m])).values(),
     ];
-    if (uniqueCategory.length > 0) {
-      setCartItemsNumber(uniqueCategory.length);
-    } else {
-      setCartItemsNumber(0);
-    }
+    setCartItemsNumber(loadedCart.length);
+    // if (uniqueCategory.length > 0) {
+    //   setCartItemsNumber(uniqueCategory.length);
+    // } else {
+    //   setCartItemsNumber(0);
+    // }
   }, [cartItemsNumber]);
 
   useEffect(() => {
