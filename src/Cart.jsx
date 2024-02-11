@@ -20,9 +20,10 @@ const Cart = () => {
     ? JSON.parse(localStorage.getItem("productList"))
     : []; // To get the items saved in the local storage
   const clearCart = () => {
-    // setTest([]);
-    loadedCart.length = 0;
-    console.log(loadedCart.length);
+    localStorage.removeItem(`productList`);
+    setTest([]);
+    // loadedCart.length = 0;
+    // console.log(loadedCart.length);
   };
   useEffect(() => {
     // const loadedCart = localStorage.getItem("productList")

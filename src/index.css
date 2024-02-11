@@ -38,6 +38,9 @@
 .danger {
   background-color: #e74c3c;
 }
+.success {
+  background-color: #07bc0c;
+}
 .item-container {
   height: 33rem;
   /* height: 30rem; */

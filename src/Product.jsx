@@ -16,6 +16,11 @@ const Product = () => {
   const [index, setIndex] = useState(0);
   const [cartItem, setCartItem] = useState(true);
   const [cartQuantity, setCartQuantity] = useState(0);
+  const [danger, setDanger] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [dangerRemove, setDangerRemove] = useState(false);
+  const [dangerMessage, setDangerMessage] = useState("");
+  const [dangerRemoveMessage, setDangerRemoveMessage] = useState("");
   // const [productList, setProductList] = useState([]);
   const {
     eachProduct,
@@ -39,20 +44,20 @@ const Product = () => {
     }
     console.log(cartQuantity);
   };
-  useEffect(() => {
-    if (cartQuantity != 0) {
-      localStorage.setItem(`cartQuantity`, cartQuantity);
-    }
-  }, [cartQuantity]);
-  useEffect(() => {
-    const loadedQuantity = parseInt(localStorage.getItem(`cartQuantity`));
-    // console.log(typeof parseInt(loadedQuantity));
-    if (loadedQuantity) {
-      setCartQuantity(loadedQuantity);
-    } else {
-      setCartQuantity(0);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (cartQuantity != 0) {
+  //     localStorage.setItem(`cartQuantity`, cartQuantity);
+  //   }
+  // }, [cartQuantity]);
+  // useEffect(() => {
+  //   const loadedQuantity = parseInt(localStorage.getItem(`cartQuantity`));
+  //   // console.log(typeof parseInt(loadedQuantity));
+  //   if (loadedQuantity) {
+  //     setCartQuantity(loadedQuantity);
+  //   } else {
+  //     setCartQuantity(0);
+  //   }
+  // }, []);
   const addToCart = () => {
     const isFound = productList.some((element) => {
       if (element.id === eachProduct.id) {
@@ -60,15 +65,33 @@ const Product = () => {
       }
 
       return false;
-    });
-
-    console.log(isFound);
+    }); //this function is used to check if an object(eachProduct) is in an array(productList). If the object is in the array, it returns true else it returns false
     if (!isFound) {
       setProductList([...productList, eachProduct]);
+      setDanger(false);
+      setDangerRemove(false);
+      setSuccess(true);
+      setDangerMessage("Item added to cart");
     }
-    console.log(productList);
+    if (isFound) {
+      setDanger(true);
+      // setSuccess(false);
+      setDangerMessage("Item already in cart");
+    }
     setCartItem(!cartItem);
   };
+  useEffect(() => {
+    let dangerAlertTime = setTimeout(() => {
+      setDanger(false);
+    }, 3000);
+    return () => clearTimeout(dangerAlertTime);
+  }, [danger]);
+  useEffect(() => {
+    let dangerAlertTime = setTimeout(() => {
+      setSuccess(false);
+    }, 3000);
+    return () => clearTimeout(dangerAlertTime);
+  }, [success]);
   const removeFromCart = (id) => {
     // const loadedCart = localStorage.getItem("productList")
     //   ? JSON.parse(localStorage.getItem("productList"))
@@ -81,7 +104,17 @@ const Product = () => {
       });
     });
     setCartItem(!cartItem);
+    setDangerRemove(true);
+    setDanger(false);
+    setSuccess(false);
+    setDangerRemoveMessage("Item removed from cart");
   };
+  useEffect(() => {
+    let dangerAlertTime = setTimeout(() => {
+      setDangerRemove(false);
+    }, 3000);
+    return () => clearTimeout(dangerAlertTime);
+  }, [dangerRemove]);
   const getEachProduct = async () => {
     try {
       const resp = await fetch(`https://dummyjson.com/products/${id}`);
@@ -89,7 +122,6 @@ const Product = () => {
         throw new Error(`Something went wrong, ${resp.status}`);
       }
       let product = await resp.json();
-      console.log(product);
       setEachProduct(product);
       setIsLoading(false);
     } catch (err) {
@@ -108,7 +140,6 @@ const Product = () => {
   useEffect(() => {
     if (productList.length != 0) {
       localStorage.setItem(`productList`, JSON.stringify(productList));
-      // navigateTo("/"); // to redirect to the route(login page) after submission of the form
     }
     const loadedCart = localStorage.getItem("productList")
       ? JSON.parse(localStorage.getItem("productList"))
@@ -180,6 +211,14 @@ const Product = () => {
         increaseQuantity={increaseQuantity}
         decreaseQuantity={decreaseQuantity}
         cartItem={cartItem}
+        danger={danger}
+        setDanger={setDanger}
+        dangerMessage={dangerMessage}
+        dangerRemoveMessage={dangerRemoveMessage}
+        dangerRemove={dangerRemove}
+        setDangerRemove={setDangerRemove}
+        success={success}
+        setSuccess={setSuccess}
       />
     </main>
   );
