@@ -8,6 +8,7 @@ import Error from "./Error.jsx";
 import { useGlobalContext } from "./context";
 import Product from "./Product.jsx";
 import Cart from "./Cart.jsx";
+import Paystack from "./Paystack.jsx";
 
 function App() {
   // const { productId, setproductId } = useGlobalContext();
@@ -36,6 +37,10 @@ function App() {
         {
           path: "cart",
           element: <Cart />,
+        },
+        {
+          path: `cart/paystack`,
+          element: <Paystack />,
         },
       ],
     },

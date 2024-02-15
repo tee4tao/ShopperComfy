@@ -103,12 +103,21 @@ const Cart = () => {
           </div>
           <div className="total-cost text-xl font-semibold">${totalCost}</div>
         </div>
-        <button
-          className=" border-4 text-white text-xl w-32 bg-Dark-nude p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-Dark-nude mt-8"
-          onClick={clearCart}
-        >
-          clear cart
-        </button>
+        <div className="space-x-6">
+          <button
+            className=" border-4 text-white text-xl w-32 bg-red-600 p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-red-600 mt-8"
+            onClick={clearCart}
+          >
+            clear cart
+          </button>
+          {/* <button className=" border-4 text-white text-xl w-32 bg-green-600 p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-green-600 mt-8"> */}
+          <Link to={`/cart/paystack`}>
+            <button className=" border-4 text-white text-xl w-32 bg-green-600 p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-green-600 mt-8">
+              Checkout
+            </button>
+          </Link>
+          {/* </button> */}
+        </div>
       </section>
     </main>
   );
