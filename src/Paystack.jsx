@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PaystackButton } from "react-paystack";
 
 const Paystack = () => {
-  const publicKey = "pk_your_public_key_here";
-  const amount = 1000000;
+  const loadedUser = localStorage.getItem("userDetail")
+    ? JSON.parse(localStorage.getItem("userDetail"))
+    : [];
+  let totalCost = localStorage.getItem(`totalcost`);
+  const publicKey = "pk_test_966df8c4dafebc42e4007bdaf9453268d7e1fa29";
+  let amount = totalCost;
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -24,7 +28,7 @@ const Paystack = () => {
 
   return (
     <div className="App  w-full grid place-items-center mt-8">
-      <div className="container flex flex-col w-full md:max-w-4xl">
+      <div className="container flex flex-col w-full md:max-w-4xl shadow-2xl">
         <div className="item">
           <div className="item-details">
             <p>{amount}</p>
@@ -32,26 +36,34 @@ const Paystack = () => {
         </div>
         <div className="checkout-form p-5">
           <form className="flex flex-col">
-            <label>Name</label>
+            <label className="text-xl mb-2">Name</label>
             <input
+              className="border-2 rounded-md text-xl capitalize"
               type="text"
               id="name"
-              onChange={(e) => setName(e.target.value)}
+              value={loadedUser.name}
+              // onChange={(e) => setName(e.target.value)}
             />
-            <label>Email</label>
+            <label className="text-xl my-2">Email</label>
             <input
+              className="border-2 rounded-md text-xl"
               type="text"
               id="email"
+              placeholder={loadedUser.email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label>Phone</label>
+            <label className="text-xl my-2">Phone</label>
             <input
+              className="border-2 rounded-md text-xl"
               type="text"
               id="phone"
               onChange={(e) => setPhone(e.target.value)}
             />
           </form>
-          <PaystackButton {...componentProps} />
+          <PaystackButton
+            {...componentProps}
+            className=" border-4 text-white text-xl w-32 bg-Dark-nude p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-Dark-nude mt-8"
+          />
         </div>
       </div>
     </div>

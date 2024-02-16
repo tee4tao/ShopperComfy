@@ -46,6 +46,9 @@ const CartItem = ({
     return acc;
     // return Math.round((acc + Number.EPSILON) * 100) / 100; // Math.round((num + Number.EPSILON) * 100) / 100 will round-off my value to 2dp
   }, 0);
+  useEffect(() => {
+    localStorage.setItem(`totalcost`, totalCost);
+  }, [totalCost]);
   // itemQuantity = test.reduce((acc, curr) => {
   //   acc += itemQuantity;
   //   return acc; // Math.round((num + Number.EPSILON) * 100) / 100 will round-off my value to 2dp
