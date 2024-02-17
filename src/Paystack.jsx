@@ -1,17 +1,65 @@
 import React, { useEffect, useState } from "react";
 import { PaystackButton } from "react-paystack";
+// import { Elements } from "@stripe/react-stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
+// import CheckoutForm from "./CheckoutForm";
+// const stripePromise = loadStripe(
+//   "pk_test_51OkjzaA31SZONt1uKcTrxNsz5fPeVbEDXHLlYsT8YaCy1UhaTetvrwRlPleUvQUx1HQFlWmi0t6SxDvjkP1vzkvB009kQrjkIC"
+// );
 
 const Paystack = () => {
+  // const options = {
+  //   // passing the client secret obtained from the server
+  //   // clientSecret: "{{CLIENT_SECRET}}",
+  //   mode: "payment",
+  //   amount: 1099,
+  //   currency: "usd",
+  //   // Fully customizable with appearance API.
+  //   appearance: {
+  //     /*...*/
+  //   },
+  // };
+
+  // return (
+  //   <Elements stripe={stripePromise} options={options}>
+  //     <CheckoutForm />
+  //   </Elements>
+  // );
+  ///////////////////
+  const [rate, setRate] = useState(0);
+  const getRate = async () => {
+    try {
+      const resp = await fetch(
+        `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`
+      );
+      if (!resp.ok) {
+        throw new Error(`Something went wrong, ${resp.status}`);
+      }
+      let product = await resp.json();
+      console.log(product);
+      setRate(product.usd.ngn);
+      //  setProducts(product);
+      //  setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+      //  setErrMessage(err.message);
+      //  setIsError(true);
+      //  setIsLoading(false);
+    }
+  };
+  useEffect(() => {
+    getRate();
+  }, []);
+  console.log(rate);
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
   let totalCost = localStorage.getItem(`totalcost`);
   const publicKey = "pk_test_966df8c4dafebc42e4007bdaf9453268d7e1fa29";
-  let amount = totalCost;
+  let amount = totalCost * 100 * rate.toFixed(2);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-
   const componentProps = {
     email,
     amount,
@@ -25,13 +73,14 @@ const Paystack = () => {
       alert("Thanks for doing business with us! Come back soon!!"),
     onClose: () => alert("Wait! Don't leave :("),
   };
-
   return (
     <div className="App  w-full grid place-items-center mt-8">
       <div className="container flex flex-col w-full md:max-w-4xl shadow-2xl">
         <div className="item">
           <div className="item-details">
-            <p>{amount}</p>
+            <p className="text-xl p-3 font-bold text-Dark-nude">
+              NGN {amount / 100}
+            </p>
           </div>
         </div>
         <div className="checkout-form p-5">
