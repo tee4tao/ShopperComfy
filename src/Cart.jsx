@@ -72,9 +72,11 @@ const Cart = () => {
     return (
       <main className="h-screen w-full flex flex-col items-center justify-center">
         <div className="text-5xl font-bold text-Dark-nude">Cart is empty</div>
-        <button className=" border-4 text-white text-xl w-32 bg-Dark-nude p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-Dark-nude mt-8">
-          <Link to={`/home/${loadedUser.username}`}>Home Page</Link>
-        </button>
+        <Link to={`/home/${loadedUser.username}`}>
+          <button className=" border-4 text-white text-xl w-32 bg-Dark-nude p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-Dark-nude mt-8">
+            Home Page
+          </button>
+        </Link>
       </main>
     );
   }
@@ -105,14 +107,14 @@ const Cart = () => {
         </div>
         <div className="space-x-6">
           <button
-            className=" border-4 text-white text-xl w-32 bg-red-600 p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-red-600 mt-8"
+            className=" border-4 text-white text-xl w-32 bg-red-600 p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-red-600 mt-8 capitalize"
             onClick={clearCart}
           >
             clear cart
           </button>
           {/* <button className=" border-4 text-white text-xl w-32 bg-green-600 p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-green-600 mt-8"> */}
           <Link to={`/cart/paystack`}>
-            <button className=" border-4 text-white text-xl w-32 bg-green-600 p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-green-600 mt-8">
+            <button className=" border-4 text-white text-xl w-32 bg-green-600 p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-green-600 mt-8 capitalize">
               Checkout
             </button>
           </Link>

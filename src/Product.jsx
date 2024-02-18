@@ -191,9 +191,11 @@ const Product = () => {
         <p className="text-Dark-nude md:text-2xl mb-4">
           <i>{errMessage}</i>
         </p>
-        <button className=" border-4 text-white text-xl w-48 bg-Dark-nude p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-Dark-nude mt-8">
-          <a href="javascript: location.reload();">Reload this page</a>
-        </button>
+        <a href="javascript: location.reload();">
+          <button className=" border-4 text-white text-xl w-48 bg-Dark-nude p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-Dark-nude mt-8">
+            Reload this page
+          </button>
+        </a>
       </div>
     );
   }
