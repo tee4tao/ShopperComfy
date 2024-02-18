@@ -27,6 +27,7 @@ const Paystack = () => {
   // );
   ///////////////////
   const [rate, setRate] = useState(0);
+  // const navigateTo = useNavigate();
   const getRate = async () => {
     try {
       const resp = await fetch(
@@ -35,11 +36,9 @@ const Paystack = () => {
       if (!resp.ok) {
         throw new Error(`Something went wrong, ${resp.status}`);
       }
-      let product = await resp.json();
-      console.log(product);
-      setRate(product.usd.ngn);
-      //  setProducts(product);
-      //  setIsLoading(false);
+      let convert = await resp.json();
+      // console.log(product);
+      setRate(convert.usd.ngn);
     } catch (err) {
       console.log(err);
       //  setErrMessage(err.message);
@@ -50,7 +49,7 @@ const Paystack = () => {
   useEffect(() => {
     getRate();
   }, []);
-  console.log(rate);
+  // console.log(rate);
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
@@ -69,9 +68,13 @@ const Paystack = () => {
     },
     publicKey,
     text: "Pay Now",
-    onSuccess: () =>
-      alert("Thanks for doing business with us! Come back soon!!"),
+    onSuccess: () => {
+      window.location.href = `/home/${loadedUser.username}`;
+      localStorage.removeItem(`productList`);
+    },
+    // alert("Thanks for doing business with us! Come back soon!!"),
     onClose: () => alert("Wait! Don't leave :("),
+    // callback_url: `home/${loadedUser.username}`,
   };
   return (
     <div className="App  w-full grid place-items-center mt-8">
