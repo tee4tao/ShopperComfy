@@ -76,9 +76,12 @@ const Nav = () => {
               <div className="capitalize text-lg text-Dark-nude w-screen hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2">
                 Category
               </div>
-              <div className="capitalize text-lg text-Dark-nude w-screen  hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2">
+              <Link
+                to={`home/account`}
+                className="capitalize text-lg text-Dark-nude w-screen  hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2"
+              >
                 Account
-              </div>
+              </Link>
               <div className="relative w-11 hidden md:block">
                 <Link to={"cart"} className="text-3xl text-white">
                   <IoCartOutline />

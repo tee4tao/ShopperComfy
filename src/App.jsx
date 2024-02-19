@@ -9,6 +9,7 @@ import { useGlobalContext } from "./context";
 import Product from "./Product.jsx";
 import Cart from "./Cart.jsx";
 import Paystack from "./Paystack.jsx";
+import Account from "./Account.jsx";
 
 function App() {
   // const { productId, setproductId } = useGlobalContext();
@@ -41,6 +42,10 @@ function App() {
         {
           path: `cart/paystack`,
           element: <Paystack />,
+        },
+        {
+          path: `home/account`,
+          element: <Account />,
         },
       ],
     },
