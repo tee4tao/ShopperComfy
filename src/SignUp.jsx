@@ -47,7 +47,7 @@ const SignUp = () => {
       localStorage.setItem(`userDetail`, JSON.stringify(userDetail));
       navigateTo("/"); // to redirect to the route(login page) after submission of the form
     }
-  }, [detail]);
+  }, [detail]); //check later!!!
   const closeAlert = () => {
     setDanger(false);
     // setAddSuccess(false);

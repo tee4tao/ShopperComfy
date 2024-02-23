@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import placeholder from "./images/placeholder.png";
 
 const Account = () => {
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
+  console.log(loadedUser);
   const [imgSrc, setImgSrc] = useState(placeholder);
   const [userFirstName, setUserFirstName] = useState(loadedUser.name);
   const [userEmail, setUserEmail] = useState(loadedUser.email);
   const [userUsername, setUserUsername] = useState(loadedUser.username);
+  const [userDetail, setUserDetail] = useState({});
   const [edit, setEdit] = useState(true);
+  const detail = {
+    name: userFirstName,
+    email: userEmail,
+    username: userUsername,
+    password: loadedUser.password,
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     setEdit(true);
+    setUserDetail({ ...detail });
   };
   const handleEdit = (e) => {
     e.preventDefault();
@@ -21,6 +30,11 @@ const Account = () => {
   const handleImage = (e) => {
     setImgSrc(URL.createObjectURL(e.target.files[0]));
   };
+  useEffect(() => {
+    if (Object.keys(userDetail).length != 0) {
+      localStorage.setItem(`userDetail`, JSON.stringify(userDetail));
+    }
+  }, [userDetail]); //check later!!!
   return (
     <main className=" w-full grid place-items-center mt-8 ">
       <section className="flex flex-col items-center w-full md:max-w-4xl">
@@ -28,7 +42,7 @@ const Account = () => {
           <img
             src={imgSrc}
             alt=""
-            className="h-40 w-40 rounded-full border-Dark-nude border-2"
+            className="h-40 w-40 rounded-full border-Dark-nude border-2 object-cover"
           />
           <input type="file" onChange={handleImage} />
         </div>
@@ -56,7 +70,7 @@ const Account = () => {
             id="userEmail"
             name="userEmail"
             value={userEmail}
-            onChange={(e) => setUserEmail(e.target.value)}
+            onChange={(e) => !edit && setUserEmail(e.target.value)}
             className="border-2 mb-4 border-black rounded-md text-xl ease-linear duration-300 lowercase"
           />
           <label htmlFor="userUsername" className="text-xl mb-2">
@@ -67,8 +81,8 @@ const Account = () => {
             id="userUsername"
             name="userUsername"
             value={userUsername}
-            onChange={(e) => setUserUsername(e.target.value)}
-            className="border-2 mb-4 border-black rounded-md text-xl ease-linear duration-300 capitalize"
+            onChange={(e) => !edit && setUserUsername(e.target.value)}
+            className="border-2 mb-4 border-black rounded-md text-xl ease-linear duration-300"
           />
           {edit ? (
             <button
