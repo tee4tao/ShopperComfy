@@ -18,11 +18,19 @@ const Account = () => {
     e.preventDefault();
     setEdit(false);
   };
+  const handleImage = (e) => {
+    setImgSrc(URL.createObjectURL(e.target.files[0]));
+  };
   return (
     <main className=" w-full grid place-items-center mt-8 ">
       <section className="flex flex-col items-center w-full md:max-w-4xl">
-        <div>
-          <img src={imgSrc} alt="" className="h-40 w-40 rounded-full " />
+        <div className="flex flex-col justify-center items-center">
+          <img
+            src={imgSrc}
+            alt=""
+            className="h-40 w-40 rounded-full border-Dark-nude border-2"
+          />
+          <input type="file" onChange={handleImage} />
         </div>
         <form
           action=""
