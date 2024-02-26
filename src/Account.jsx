@@ -5,6 +5,9 @@ const Account = () => {
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
+  const loadedImg = localStorage.getItem("userImg")
+    ? localStorage.getItem("userImg")
+    : [];
   console.log(loadedUser);
   const [imgSrc, setImgSrc] = useState(placeholder);
   const [userFirstName, setUserFirstName] = useState(loadedUser.name);
@@ -28,13 +31,34 @@ const Account = () => {
     setEdit(false);
   };
   const handleImage = (e) => {
-    setImgSrc(URL.createObjectURL(e.target.files[0]));
+    // setImgSrc(URL.createObjectURL(e.target.files[0]));
+    setImgSrc(uploader(e.target.files[0]));
+    // uploader();
+    uploader(e.target.files[0]);
   };
+  const uploader = (file) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      localStorage.setItem("recent-image", reader.result);
+    });
+    reader.readAsDataURL(file);
+  };
+  useEffect(() => {
+    setImgSrc(localStorage.getItem("recent-image"));
+  }, [imgSrc]);
+  // useEffect(() => {
+  //   if (imgSrc != placeholder) {
+  //     localStorage.setItem(`userImg`, imgSrc);
+  //   }
+  //   // if (loadedImg) {
+  //   //   setImgSrc(loadedImg);
+  //   // }
+  // }, [imgSrc]);
   useEffect(() => {
     if (Object.keys(userDetail).length != 0) {
       localStorage.setItem(`userDetail`, JSON.stringify(userDetail));
     }
-  }, [userDetail]); //check later!!!
+  }, [userDetail]);
   return (
     <main className=" w-full grid place-items-center mt-8 ">
       <section className="flex flex-col items-center w-full md:max-w-4xl">
