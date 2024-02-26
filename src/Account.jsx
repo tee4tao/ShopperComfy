@@ -5,10 +5,10 @@ const Account = () => {
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
-  const loadedImg = localStorage.getItem("userImg")
-    ? localStorage.getItem("userImg")
+  const loadedImg = localStorage.getItem("recent-image")
+    ? localStorage.getItem("recent-image")
     : [];
-  console.log(loadedUser);
+  // console.log(loadedUser);
   const [imgSrc, setImgSrc] = useState(placeholder);
   const [userFirstName, setUserFirstName] = useState(loadedUser.name);
   const [userEmail, setUserEmail] = useState(loadedUser.email);
@@ -34,7 +34,7 @@ const Account = () => {
     // setImgSrc(URL.createObjectURL(e.target.files[0]));
     setImgSrc(uploader(e.target.files[0]));
     // uploader();
-    uploader(e.target.files[0]);
+    // uploader(e.target.files[0]);
   };
   const uploader = (file) => {
     const reader = new FileReader();
@@ -46,14 +46,17 @@ const Account = () => {
   useEffect(() => {
     setImgSrc(localStorage.getItem("recent-image"));
   }, [imgSrc]);
-  // useEffect(() => {
-  //   if (imgSrc != placeholder) {
-  //     localStorage.setItem(`userImg`, imgSrc);
-  //   }
-  //   // if (loadedImg) {
-  //   //   setImgSrc(loadedImg);
-  //   // }
-  // }, [imgSrc]);
+  useEffect(() => {
+    if (!localStorage.getItem("recent-image")) {
+      setImgSrc(placeholder);
+    }
+    // if (imgSrc != placeholder) {
+    //   localStorage.setItem(`userImg`, imgSrc);
+    // }
+    // if (loadedImg) {
+    //   setImgSrc(loadedImg);
+    // }
+  }, [imgSrc]);
   useEffect(() => {
     if (Object.keys(userDetail).length != 0) {
       localStorage.setItem(`userDetail`, JSON.stringify(userDetail));
