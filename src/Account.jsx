@@ -74,7 +74,7 @@ const Account = () => {
             alt=""
             className="h-40 w-40 rounded-full border-Dark-nude border-2 object-cover"
           />
-          <input type="file" onChange={handleImage} />
+          {!edit && <input type="file" onChange={handleImage} />}
         </div>
         <form
           action=""
