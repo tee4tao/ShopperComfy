@@ -31,10 +31,11 @@ const Account = () => {
     setEdit(false);
   };
   const handleImage = (e) => {
-    // setImgSrc(URL.createObjectURL(e.target.files[0]));
-    setImgSrc(uploader(e.target.files[0]));
+    setImgSrc(URL.createObjectURL(e.target.files[0]));
+    // setImgSrc(loadedImg);
+    // setImgSrc(uploader(e.target.files[0]));
     // uploader();
-    // uploader(e.target.files[0]);
+    uploader(e.target.files[0]);
   };
   const uploader = (file) => {
     const reader = new FileReader();
@@ -44,12 +45,14 @@ const Account = () => {
     reader.readAsDataURL(file);
   };
   useEffect(() => {
-    setImgSrc(localStorage.getItem("recent-image"));
+    if (localStorage.getItem("recent-image")) {
+      setImgSrc(localStorage.getItem("recent-image"));
+    }
   }, [imgSrc]);
   useEffect(() => {
-    if (!localStorage.getItem("recent-image")) {
-      setImgSrc(placeholder);
-    }
+    // if (!localStorage.getItem("recent-image")) {
+    //   setImgSrc(placeholder);
+    // }
     // if (imgSrc != placeholder) {
     //   localStorage.setItem(`userImg`, imgSrc);
     // }

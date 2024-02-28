@@ -102,6 +102,7 @@ const Paystack = () => {
               type="text"
               id="email"
               placeholder={loadedUser.email}
+              // value={loadedUser.email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <label className="text-xl my-2">Phone</label>
