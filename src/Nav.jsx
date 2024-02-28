@@ -44,7 +44,7 @@ const Nav = () => {
             <Link to={`home/${loadedUser.username}`} className="nav-logo">
               ShopperComfy
             </Link>
-            <div className="relative w-11">
+            <div className="relative w-11" onClick={() => setShowLinks(false)}>
               <Link to={"cart"} className="md:hidden text-3xl">
                 <IoCartOutline />
               </Link>
@@ -70,6 +70,7 @@ const Nav = () => {
               <Link
                 to={`home/${loadedUser.username}`}
                 className="capitalize text-lg text-Dark-nude w-screen hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2"
+                onClick={() => setShowLinks(false)}
               >
                 Home
               </Link>
@@ -79,6 +80,7 @@ const Nav = () => {
               <Link
                 to={`home/account`}
                 className="capitalize text-lg text-Dark-nude w-screen  hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2"
+                onClick={() => setShowLinks(false)}
               >
                 Account
               </Link>
