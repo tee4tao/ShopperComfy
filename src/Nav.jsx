@@ -107,6 +107,18 @@ const Nav = () => {
                 onMouseOut={() => setShowCategory(false)}
               >
                 Category
+                <span className="fixed text-Dark-nude bg-white z-10 rounded-2xl shadow-2xl">
+                  {showCategory &&
+                    productsCategory.map((item, index) => {
+                      return (
+                        <div key={index} className="hover:pl-0">
+                          <button className="border-1 bg-Dark-nude mx-auto text-white rounded-md font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white">
+                            {item}
+                          </button>
+                        </div>
+                      );
+                    })}
+                </span>
               </div>
               <Link
                 to={`home/account`}
