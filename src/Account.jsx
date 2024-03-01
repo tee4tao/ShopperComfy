@@ -15,6 +15,7 @@ const Account = () => {
   const [userUsername, setUserUsername] = useState(loadedUser.username);
   const [userDetail, setUserDetail] = useState({});
   const [edit, setEdit] = useState(true);
+
   const detail = {
     name: userFirstName,
     email: userEmail,
@@ -50,21 +51,11 @@ const Account = () => {
     }
   }, [imgSrc]);
   useEffect(() => {
-    // if (!localStorage.getItem("recent-image")) {
-    //   setImgSrc(placeholder);
-    // }
-    // if (imgSrc != placeholder) {
-    //   localStorage.setItem(`userImg`, imgSrc);
-    // }
-    // if (loadedImg) {
-    //   setImgSrc(loadedImg);
-    // }
-  }, [imgSrc]);
-  useEffect(() => {
     if (Object.keys(userDetail).length != 0) {
       localStorage.setItem(`userDetail`, JSON.stringify(userDetail));
     }
   }, [userDetail]);
+
   return (
     <main className=" w-full grid place-items-center mt-8 ">
       <section className="flex flex-col items-center w-full md:max-w-4xl">

@@ -9,6 +9,11 @@ const Nav = () => {
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
   const { cartItemsNumber, setCartItemsNumber } = useGlobalContext();
+  const [productsCategory, setProductsCategory] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [errMessage, setErrMessage] = useState(``);
+  const [showCategory, setShowCategory] = useState(false);
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
@@ -35,6 +40,28 @@ const Nav = () => {
       linksContainerRef.current.style.height = `0px`;
     }
   }, [showLinks]);
+  const getProductsCategory = async () => {
+    try {
+      const resp = await fetch("https://dummyjson.com/products/categories");
+      if (!resp.ok) {
+        throw new Error(`Something went wrong, ${resp.status}`);
+      }
+      let category = await resp.json();
+      console.log(category);
+      setProductsCategory(category);
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+      setErrMessage(err.message);
+      setIsError(true);
+      setIsLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (showCategory) {
+      getProductsCategory();
+    }
+  }, [showCategory]);
 
   return (
     <main className="">
@@ -74,7 +101,11 @@ const Nav = () => {
               >
                 Home
               </Link>
-              <div className="capitalize text-lg text-Dark-nude w-screen hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2">
+              <div
+                className="capitalize text-lg text-Dark-nude w-screen hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2"
+                onMouseOver={() => setShowCategory(true)}
+                onMouseOut={() => setShowCategory(false)}
+              >
                 Category
               </div>
               <Link
