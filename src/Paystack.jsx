@@ -31,7 +31,8 @@ const Paystack = () => {
   const getRate = async () => {
     try {
       const resp = await fetch(
-        `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`
+        // `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`
+        `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json` //https://github.com/fawazahmed0/exchange-api?tab=readme-ov-file //the api github repo
       );
       if (!resp.ok) {
         throw new Error(`Something went wrong, ${resp.status}`);

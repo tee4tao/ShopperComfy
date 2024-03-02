@@ -23,7 +23,7 @@ const Article = ({ items }) => {
     setProductId(id);
     setTest(true);
     // navigateTo(`/product/${productId}`);
-    console.log(id);
+    // console.log(id);
   };
   const handleAdd = () => {
     console.log(`add to cart`);
