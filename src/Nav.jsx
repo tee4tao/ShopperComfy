@@ -105,14 +105,15 @@ const Nav = () => {
                 className="capitalize text-lg text-Dark-nude w-screen hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2"
                 onMouseOver={() => setShowCategory(true)}
                 onMouseOut={() => setShowCategory(false)}
+                // onClick={() => setShowCategory(!showCategory)}
               >
                 Category
-                <span className="fixed text-Dark-nude bg-white z-10 rounded-2xl shadow-2xl">
+                <span className="fixed text-Dark-nude bg-white z-10 rounded-2xl shadow-2xl left-28 md:left-auto md:top-12">
                   {showCategory &&
                     productsCategory.map((item, index) => {
                       return (
-                        <div key={index} className="hover:pl-0">
-                          <button className="border-1 bg-Dark-nude mx-auto text-white rounded-md font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white">
+                        <div key={index} className="hover:pr-6 hover:pl-0">
+                          <button className="ease-linear duration-300 hover:bg-Dark-nude hover:text-white rounded-md capitalize">
                             {item}
                           </button>
                         </div>
