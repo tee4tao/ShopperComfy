@@ -52,6 +52,10 @@ function App() {
           path: `home/:category`,
           element: <CategoryProduct />,
         },
+        {
+          path: `home/:category/product/:id`,
+          element: <Product />,
+        },
       ],
     },
   ]);

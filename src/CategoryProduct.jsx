@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import Article from "./Article";
+import CategoryArticle from "./CategoryArticle";
 
 const CategoryProduct = () => {
   let { category } = useParams();
@@ -59,7 +59,7 @@ const CategoryProduct = () => {
     <main className="min-h-screen grid place-items-center">
       <section className="mx-1 md:w-3/5 max-w-7xl grid grid-cols-2 lg:grid-cols-3 gap-4 ease-linear duration-300">
         {products.products.map((items) => {
-          return <Article items={items} key={items.id} />;
+          return <CategoryArticle items={items} key={items.id} />;
         })}
       </section>
     </main>
