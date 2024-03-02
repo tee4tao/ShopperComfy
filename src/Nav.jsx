@@ -47,7 +47,7 @@ const Nav = () => {
         throw new Error(`Something went wrong, ${resp.status}`);
       }
       let category = await resp.json();
-      console.log(category);
+      // console.log(category);
       setProductsCategory(category);
       setIsLoading(false);
     } catch (err) {
@@ -113,9 +113,12 @@ const Nav = () => {
                     productsCategory.map((item, index) => {
                       return (
                         <div key={index} className="hover:pr-6 hover:pl-0">
-                          <button className="ease-linear duration-300 hover:bg-Dark-nude hover:text-white rounded-md capitalize">
+                          <Link
+                            to={`home/${item}`}
+                            className="ease-linear duration-300 hover:bg-Dark-nude hover:text-white rounded-md capitalize"
+                          >
                             {item}
-                          </button>
+                          </Link>
                         </div>
                       );
                     })}

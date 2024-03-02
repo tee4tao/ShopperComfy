@@ -10,6 +10,7 @@ import Product from "./Product.jsx";
 import Cart from "./Cart.jsx";
 import Paystack from "./Paystack.jsx";
 import Account from "./Account.jsx";
+import CategoryProduct from "./CategoryProduct.jsx";
 
 function App() {
   // const { productId, setproductId } = useGlobalContext();
@@ -46,6 +47,10 @@ function App() {
         {
           path: `home/account`,
           element: <Account />,
+        },
+        {
+          path: `home/:category`,
+          element: <CategoryProduct />,
         },
       ],
     },
