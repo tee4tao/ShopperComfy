@@ -32,7 +32,8 @@ const CategoryProduct = () => {
   };
   useEffect(() => {
     getProducts();
-  }, []);
+    setIsLoading(true);
+  }, [category]);
   if (isLoading) {
     return <div className="loader"></div>;
   }
