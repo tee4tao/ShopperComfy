@@ -33,7 +33,7 @@ const CategoryProduct = () => {
   useEffect(() => {
     getProducts();
     setIsLoading(true);
-  }, [category]);
+  }, [category]); // added category as a dependency so that anytime the category in the route changes, the useEffect will call the getProduct functiom and reload the page to display the result for the new category.
   if (isLoading) {
     return <div className="loader"></div>;
   }

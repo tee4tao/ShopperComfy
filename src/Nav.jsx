@@ -14,6 +14,10 @@ const Nav = () => {
   const [isError, setIsError] = useState(false);
   const [errMessage, setErrMessage] = useState(``);
   const [showCategory, setShowCategory] = useState(false);
+  const categoryClick = () => {
+    setShowLinks(false);
+    setShowCategory(false);
+  };
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
@@ -68,7 +72,11 @@ const Nav = () => {
       <nav className="w-full flex justify-center items-center shadow-2xl bg-Dark-nude">
         <div className="nav-center flex flex-col justify-between items-center w-11/12 md:flex-row md:max-w-6xl md:justify-between md:p-4">
           <div className="nav-header flex justify-between items-center w-full p-2 md:p-0">
-            <Link to={`home/${loadedUser.username}`} className="nav-logo">
+            <Link
+              to={`home/${loadedUser.username}`}
+              className="nav-logo"
+              onClick={() => setShowLinks(false)}
+            >
               ShopperComfy
             </Link>
             <div className="relative w-11" onClick={() => setShowLinks(false)}>
@@ -105,10 +113,11 @@ const Nav = () => {
                 className="capitalize text-lg text-Dark-nude w-screen hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2"
                 onMouseOver={() => setShowCategory(true)}
                 onMouseOut={() => setShowCategory(false)}
+                onClick={categoryClick}
                 // onClick={() => setShowCategory(!showCategory)}
               >
                 Category
-                <span className="fixed text-Dark-nude bg-white z-10 rounded-2xl shadow-2xl left-28 md:left-auto md:top-12">
+                <span className="fixed text-Dark-nude bg-white z-10 rounded-2xl shadow-2xl left-28 md:left-auto  top-28 md:top-12">
                   {showCategory &&
                     productsCategory.map((item, index) => {
                       return (
