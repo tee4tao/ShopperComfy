@@ -14,9 +14,22 @@ const Nav = () => {
   const [isError, setIsError] = useState(false);
   const [errMessage, setErrMessage] = useState(``);
   const [showCategory, setShowCategory] = useState(false);
+  const [centerPosition, setCenterPosition] = useState(0);
+  const [bottomPosition, setBottomPosition] = useState(0);
   const categoryClick = () => {
     setShowLinks(false);
     setShowCategory(false);
+  };
+  const displaySubmenu = (e) => {
+    //  const page = e.target.textContent;
+    const tempBtn = e.target.getBoundingClientRect();
+    const center = (tempBtn.left + tempBtn.right) / 2;
+    setCenterPosition(center);
+    // console.log(centerPosition);
+    const bottom = tempBtn.bottom + 4;
+    setBottomPosition(bottom);
+    //  openSubmenu(page, { center, bottom });
+    setShowCategory(true);
   };
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
@@ -111,13 +124,18 @@ const Nav = () => {
               </Link>
               <div
                 className="capitalize text-lg text-Dark-nude w-screen hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2"
-                onMouseOver={() => setShowCategory(true)}
+                // onMouseOver={() => setShowCategory(true)}
+                onMouseOver={displaySubmenu}
                 onMouseOut={() => setShowCategory(false)}
                 onClick={categoryClick}
                 // onClick={() => setShowCategory(!showCategory)}
               >
                 Category
-                <span className="fixed text-Dark-nude bg-white z-10 rounded-2xl shadow-2xl left-28 md:left-auto  top-28 md:top-12">
+                <span
+                  // className="fixed text-Dark-nude bg-white z-10 rounded-2xl shadow-2xl left-28 md:left-auto  top-28 md:top-12"
+                  className={`${showCategory ? "submenu show" : "submenu"}`}
+                  style={{ left: centerPosition, top: bottomPosition }}
+                >
                   {showCategory &&
                     productsCategory.map((item, index) => {
                       return (

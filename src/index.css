@@ -340,8 +340,8 @@ paystack
   margin-top: 40px;
 } */
 .submenu {
-  background: var(--clr-white);
-  box-shadow: var(--dark-shadow);
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   position: absolute;
   top: 4rem;
   left: 50%;
@@ -349,8 +349,8 @@ paystack
   z-index: 3;
   display: none;
   padding: 2rem;
-  border-radius: var(--radius);
-  transition: var(--transition);
+  border-radius: 0.25rem;
+  transition: all 0.3s linear;
 }
 .submenu::before {
   content: "";
@@ -359,7 +359,7 @@ paystack
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 5px solid var(--clr-white);
+  border-bottom: 5px solid #fff;
   position: absolute;
   top: -5px;
   left: 50%;
