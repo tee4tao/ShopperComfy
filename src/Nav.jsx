@@ -5,12 +5,18 @@ import { IoCartOutline } from "react-icons/io5";
 import { useGlobalContext } from "./context";
 
 const Nav = () => {
-  const [showLinks, setShowLinks] = useState(false);
+  // const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
   const container = useRef(null);
-  const { cartItemsNumber, setCartItemsNumber, showCategory, setShowCategory } =
-    useGlobalContext();
+  const {
+    cartItemsNumber,
+    setCartItemsNumber,
+    showCategory,
+    setShowCategory,
+    showLinks,
+    setShowLinks,
+  } = useGlobalContext();
   const [productsCategory, setProductsCategory] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);

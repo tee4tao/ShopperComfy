@@ -8,6 +8,7 @@ import { useGlobalContext } from "./context";
 import Eachproduct from "./Eachproduct";
 
 const Product = () => {
+  const { setShowLinks } = useGlobalContext();
   let { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -134,6 +135,7 @@ const Product = () => {
     }
   };
   useEffect(() => {
+    setShowLinks(false);
     const loadedCart = localStorage.getItem("productList")
       ? JSON.parse(localStorage.getItem("productList"))
       : []; // To get the items saved in the local storage

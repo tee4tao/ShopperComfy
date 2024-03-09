@@ -10,6 +10,7 @@ export const AppProvider = ({ children }) => {
   const [cartItemsNumber, setCartItemsNumber] = useState(0);
   const [cartQuantity, setCartQuantity] = useState(0);
   const [showCategory, setShowCategory] = useState(false);
+  const [showLinks, setShowLinks] = useState(false);
   const openSubmenu = (coordinates) => {
     // const page = sublinks.find((link) => link.page === text);
     // setPage(page);
@@ -33,6 +34,8 @@ export const AppProvider = ({ children }) => {
         setCartQuantity,
         showCategory,
         setShowCategory,
+        showLinks,
+        setShowLinks,
       }}
     >
       {children}

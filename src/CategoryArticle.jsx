@@ -17,7 +17,7 @@ const CategoryArticle = ({ items }) => {
     title,
   } = items;
   const [test, setTest] = useState(false);
-  let { productId, setProductId, setShowCategory } = useGlobalContext();
+  let { productId, setProductId, setShowLinks } = useGlobalContext();
   const handleClick = () => {
     setProductId(id);
     setTest(true);
@@ -30,6 +30,9 @@ const CategoryArticle = ({ items }) => {
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
+  useEffect(() => {
+    setShowLinks(false);
+  }, []);
   // useEffect(() => {
   //   if (test) {
   //     navigateTo(`product/${productId}`);
@@ -40,7 +43,7 @@ const CategoryArticle = ({ items }) => {
       key={id}
       className="item-container flex flex-col my-4 shadow-lg hover:shadow-2xl hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white cursor-pointer relative"
       onClick={() => {
-        setShowCategory(false);
+        setShowLinks(false);
       }}
     >
       <Link to={`product/${id}`}>

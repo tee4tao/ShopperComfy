@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import CategoryArticle from "./CategoryArticle";
+import { useGlobalContext } from "./context";
 
 const CategoryProduct = () => {
+  const { setShowCategory } = useGlobalContext();
   let { category } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -57,7 +59,12 @@ const CategoryProduct = () => {
     );
   }
   return (
-    <main className="min-h-screen grid place-items-center">
+    <main
+      className="min-h-screen grid place-items-center"
+      onClick={() => {
+        setShowCategory(false);
+      }}
+    >
       <section className="mx-1 md:w-3/5 max-w-7xl grid grid-cols-2 lg:grid-cols-3 gap-4 ease-linear duration-300">
         {products.products.map((items) => {
           return <CategoryArticle items={items} key={items.id} />;
