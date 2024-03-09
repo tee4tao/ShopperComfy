@@ -18,7 +18,7 @@ const Article = ({ items }) => {
     title,
   } = items;
   const [test, setTest] = useState(false);
-  let { productId, setProductId } = useGlobalContext();
+  let { productId, setProductId, setShowCategory } = useGlobalContext();
   const handleClick = () => {
     setProductId(id);
     setTest(true);
@@ -40,6 +40,9 @@ const Article = ({ items }) => {
     <article
       key={id}
       className="item-container flex flex-col my-4 shadow-lg hover:shadow-2xl hover:bg-Dark-nude ease-linear duration-300 rounded-md hover:text-white cursor-pointer relative"
+      onClick={() => {
+        setShowCategory(false);
+      }}
     >
       <Link to={`product/${id}`}>
         <img

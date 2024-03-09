@@ -12,6 +12,7 @@ const Cart = () => {
     setProductList,
     cartItemsNumber,
     setCartItemsNumber,
+    setShowCategory,
   } = useGlobalContext();
   const [test, setTest] = useState([]);
   const [itemQuantity, setItemQuantity] = useState(1);
@@ -81,7 +82,12 @@ const Cart = () => {
     );
   }
   return (
-    <main className=" w-full grid place-items-center mt-8 ">
+    <main
+      className=" w-full grid place-items-center mt-8 "
+      onClick={() => {
+        setShowCategory(false);
+      }}
+    >
       <section className="flex flex-col items-center w-full md:max-w-4xl">
         {test.map((product) => {
           return (

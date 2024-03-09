@@ -29,6 +29,8 @@ const Product = () => {
     setProductList,
     cartItemsNumber,
     setCartItemsNumber,
+    setShowCategory,
+
     // cartQuantity,
     // setCartQuantity,
   } = useGlobalContext();
@@ -201,7 +203,12 @@ const Product = () => {
   }
 
   return (
-    <main className="h-screen w-full grid place-items-center ">
+    <main
+      className="h-screen w-full grid place-items-center "
+      onClick={() => {
+        setShowCategory(false);
+      }}
+    >
       <Eachproduct
         eachProduct={eachProduct}
         setEachProduct={setEachProduct}

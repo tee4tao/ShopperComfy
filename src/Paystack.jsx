@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PaystackButton } from "react-paystack";
+import { useGlobalContext } from "./context";
+
 // import { Elements } from "@stripe/react-stripe-js";
 // import { loadStripe } from "@stripe/stripe-js";
 // import CheckoutForm from "./CheckoutForm";
@@ -26,6 +28,7 @@ const Paystack = () => {
   //   </Elements>
   // );
   ///////////////////
+  let { setShowCategory } = useGlobalContext();
   const [rate, setRate] = useState(0);
   // const navigateTo = useNavigate();
   const getRate = async () => {
@@ -78,7 +81,12 @@ const Paystack = () => {
     // callback_url: `home/${loadedUser.username}`,
   };
   return (
-    <div className="App  w-full grid place-items-center mt-8">
+    <div
+      className="App  w-full grid place-items-center mt-8"
+      onClick={() => {
+        setShowCategory(false);
+      }}
+    >
       <div className="container flex flex-col w-full md:max-w-4xl shadow-2xl">
         <div className="item">
           <div className="item-details">
