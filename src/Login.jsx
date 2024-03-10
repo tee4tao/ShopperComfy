@@ -21,7 +21,7 @@ const Login = () => {
     ? JSON.parse(localStorage.getItem("userDetail"))
     : []; // To get the items saved in the local storage
   const [getUserDetail, setGetUserDetail] = useState(loadedUser);
-  console.log(getUserDetail.password);
+
   const handleToggle = () => {
     if (type === "password") {
       setIcon(true);

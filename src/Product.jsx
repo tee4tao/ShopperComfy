@@ -8,7 +8,6 @@ import { useGlobalContext } from "./context";
 import Eachproduct from "./Eachproduct";
 
 const Product = () => {
-  const { setShowLinks } = useGlobalContext();
   let { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -31,7 +30,7 @@ const Product = () => {
     cartItemsNumber,
     setCartItemsNumber,
     setShowCategory,
-
+    setShowLinks,
     // cartQuantity,
     // setCartQuantity,
   } = useGlobalContext();

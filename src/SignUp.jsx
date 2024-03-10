@@ -27,7 +27,6 @@ const SignUp = () => {
     e.preventDefault();
     if (name != `` && email != `` && username != `` && password != ``) {
       setUserDetail({ ...detail });
-      console.log(userDetail);
       setDanger(false);
     } else {
       setDanger(true);
