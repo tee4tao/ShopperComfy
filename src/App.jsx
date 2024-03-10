@@ -14,12 +14,19 @@ import CategoryProduct from "./CategoryProduct.jsx";
 
 function App() {
   // const { productId, setproductId } = useGlobalContext();
+  // let location = useLocation();
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
   const router = createBrowserRouter([
+    { index: true, element: <Login /> },
+    {
+      path: "register",
+      element: <SignUp />,
+    },
     {
       path: "/",
+      // element: <Nav />,
       element: <Nav />,
       errorElement: <Error />,
       children: [
@@ -28,10 +35,7 @@ function App() {
           path: `home/${loadedUser.username}`,
           element: <Home />,
         },
-        {
-          path: "register",
-          element: <SignUp />,
-        },
+
         {
           path: `home/${loadedUser.username}/product/:id`,
           element: <Product />,
