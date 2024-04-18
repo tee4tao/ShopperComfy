@@ -19,21 +19,21 @@ function App() {
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
   const router = createBrowserRouter([
-    { index: true, element: <Login /> },
-    {
-      path: "register",
-      element: <SignUp />,
-    },
+    // { index: true, element: <Login /> },
+    // {
+    //   path: "register",
+    //   element: <SignUp />,
+    // },
     {
       path: "/",
       element: <Nav />,
       errorElement: <Error />,
       children: [
-        // { index: true, element: <Login /> },
-        {
-          path: `home/${loadedUser.username}`,
-          element: <Home />,
-        },
+        { index: true, element: <Home /> },
+        // {
+        //   path: `home/${loadedUser.username}`,
+        //   element: <Home />,
+        // },
 
         {
           path: `home/${loadedUser.username}/product/:id`,
