@@ -47,10 +47,10 @@ const Login = () => {
       setDanger(true);
       setDangerMessage(`Invalid password`);
     } else {
-    setInvalid(false);
-    setInvalidPassword(false);
-    navigateTo(`home/${loadedUser.username}`); // to redirect to the route(home page) after submission of the form
-    // }
+      setInvalid(false);
+      setInvalidPassword(false);
+      navigateTo(`home/${loadedUser.username}`); // to redirect to the route(home page) after submission of the form
+    }
   };
   const closeAlert = () => {
     setDanger(false);
