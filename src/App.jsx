@@ -26,11 +26,10 @@ function App() {
     },
     {
       path: "/",
-      // element: <Nav />,
       element: <Nav />,
       errorElement: <Error />,
       children: [
-        { index: true, element: <Login /> },
+        // { index: true, element: <Login /> },
         {
           path: `home/${loadedUser.username}`,
           element: <Home />,
