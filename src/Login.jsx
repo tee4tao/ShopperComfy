@@ -33,19 +33,20 @@ const Login = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      (username !== getUserDetail.username &&
-        password !== getUserDetail.password) ||
-      username !== getUserDetail.username
-    ) {
-      setInvalid(true);
+    // if (
+    //   (username !== getUserDetail.username &&
+    //     password !== getUserDetail.password) ||
+    //   username !== getUserDetail.username
+    // ) {
+    //   setInvalid(true);
+    //   setDanger(true);
+    //   setDangerMessage(`Invalid username or password`);
+    // } else
+    if (password !== getUserDetail.password) {
+      setInvalid(false);
+      setInvalidPassword(true);
       setDanger(true);
-      setDangerMessage(`Invalid username or password`);
-      // } else if (password !== getUserDetail.password) {
-      //   setInvalid(false);
-      //   setInvalidPassword(true);
-      //   setDanger(true);
-      //   setDangerMessage(`Invalid password`);
+      setDangerMessage(`Invalid password`);
     } else {
       setInvalid(false);
       setInvalidPassword(false);
