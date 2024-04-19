@@ -13,7 +13,7 @@ const Home = () => {
   //   : [];
   const getProducts = async () => {
     try {
-      const resp = await fetch(`https://dummyjson.com/products`);
+      const resp = await fetch(`https://fakestoreapi.com/products`);
       if (!resp.ok) {
         throw new Error(`Something went wrong, ${resp.status}`);
       }
