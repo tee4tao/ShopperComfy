@@ -41,11 +41,11 @@ const Login = () => {
       setInvalid(true);
       setDanger(true);
       setDangerMessage(`Invalid username or password`);
-    } else if (password !== getUserDetail.password) {
-      setInvalid(false);
-      setInvalidPassword(true);
-      setDanger(true);
-      setDangerMessage(`Invalid password`);
+      // } else if (password !== getUserDetail.password) {
+      //   setInvalid(false);
+      //   setInvalidPassword(true);
+      //   setDanger(true);
+      //   setDangerMessage(`Invalid password`);
     } else {
       setInvalid(false);
       setInvalidPassword(false);
