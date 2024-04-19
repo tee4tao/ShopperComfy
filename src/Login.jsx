@@ -33,24 +33,24 @@ const Login = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (
-    //   (username !== getUserDetail.username &&
-    //     password !== getUserDetail.password) ||
-    //   username !== getUserDetail.username
-    // ) {
-    //   setInvalid(true);
-    //   setDanger(true);
-    //   setDangerMessage(`Invalid username or password`);
-    // } else if (password !== getUserDetail.password) {
-    //   setInvalid(false);
-    //   setInvalidPassword(true);
-    //   setDanger(true);
-    //   setDangerMessage(`Invalid password`);
-    // } else {
-    setInvalid(false);
-    setInvalidPassword(false);
-    navigateTo(`home/${loadedUser.username}`); // to redirect to the route(home page) after submission of the form
-    // }
+    if (
+      (username !== getUserDetail.username &&
+        password !== getUserDetail.password) ||
+      username !== getUserDetail.username
+    ) {
+      setInvalid(true);
+      setDanger(true);
+      setDangerMessage(`Invalid username or password`);
+    } else if (password !== getUserDetail.password) {
+      setInvalid(false);
+      setInvalidPassword(true);
+      setDanger(true);
+      setDangerMessage(`Invalid password`);
+    } else {
+      setInvalid(false);
+      setInvalidPassword(false);
+      navigateTo(`home/${loadedUser.username}`); // to redirect to the route(home page) after submission of the form
+    }
   };
   const closeAlert = () => {
     setDanger(false);
@@ -109,6 +109,7 @@ const Login = () => {
             {/* <label htmlFor="username">Username:</label> */}
             <input
               type="text"
+              id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Your username"
