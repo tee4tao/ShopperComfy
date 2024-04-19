@@ -103,7 +103,6 @@ const Login = () => {
           <form
             action=""
             className="mb-6 h-3/4 w-3/4 hover:bg-Dark-nude flex flex-col items-center justify-center rounded-lg shadow-lg ease-linear duration-300 hover:shadow-2xl p-4"
-            onSubmit={handleSubmit}
           >
             {/* <div className="mb-4"> */}
             {/* <label htmlFor="username">Username:</label> */}
@@ -148,6 +147,7 @@ const Login = () => {
             <button
               type="submit"
               className="border-2 w-3/5 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white"
+              onClick={handleSubmit}
             >
               Login
             </button>
