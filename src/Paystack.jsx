@@ -34,7 +34,6 @@ const Paystack = () => {
   const getRate = async () => {
     try {
       const resp = await fetch(
-        // `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`
         `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json` //https://github.com/fawazahmed0/exchange-api?tab=readme-ov-file //the api github repo
       );
       if (!resp.ok) {
@@ -59,7 +58,7 @@ const Paystack = () => {
     : [];
   let totalCost = localStorage.getItem(`totalcost`);
   const publicKey = "pk_test_966df8c4dafebc42e4007bdaf9453268d7e1fa29";
-  let amount = parseFloat(totalCost * 100 * rate.toFixed(2));
+  let amount = 2000 * 100; //parseFloat(totalCost * 100 * rate.toFixed(2));
   // alert(typeof amount);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -92,8 +91,8 @@ const Paystack = () => {
         <div className="item">
           <div className="item-details">
             <p className="text-xl p-3 font-bold text-Dark-nude">
-              {/* NGN {amount} */}
-              NGN {(amount / 100).toLocaleString()}
+              NGN 2000
+              {/* NGN {(amount / 100).toLocaleString()} */}
             </p>
           </div>
         </div>
