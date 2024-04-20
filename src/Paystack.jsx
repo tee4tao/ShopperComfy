@@ -91,7 +91,7 @@ const Paystack = () => {
         <div className="item">
           <div className="item-details">
             <p className="text-xl p-3 font-bold text-Dark-nude">
-              NGN {(amount / 100).toLocaleString()}
+              {(amount / 100).toLocaleString()}
             </p>
           </div>
         </div>
