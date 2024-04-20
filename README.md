@@ -34,4 +34,4 @@ This is a user-friendly E-commerce website where users can buy goods like phones
 - [dummyjson.com](https://dummyjson.com/docs) is the link to the official docs of the API where I fetched all the product on the website from.
 - The link to the github repo of the API I used for my currency conversion from USD to NGN. [Currency Converter](https://github.com/fawazahmed0/exchange-api?tab=readme-ov-file)
 
-#### Dummy API
+#### Dummy
