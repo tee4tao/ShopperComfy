@@ -59,7 +59,7 @@ const Paystack = () => {
     : [];
   let totalCost = localStorage.getItem(`totalcost`);
   const publicKey = "pk_test_966df8c4dafebc42e4007bdaf9453268d7e1fa29";
-  let amount = totalCost * 100 * rate.toFixed(2);
+  let amount = parseFloat(totalCost * 100 * rate.toFixed(2));
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -91,7 +91,8 @@ const Paystack = () => {
         <div className="item">
           <div className="item-details">
             <p className="text-xl p-3 font-bold text-Dark-nude">
-              {(amount / 100).toLocaleString()}
+              {/* 3000000 */}
+              NGN {(amount / 100).toLocaleString()}
             </p>
           </div>
         </div>
