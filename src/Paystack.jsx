@@ -58,7 +58,7 @@ const Paystack = () => {
     : [];
   let totalCost = localStorage.getItem(`totalcost`);
   const publicKey = "pk_test_966df8c4dafebc42e4007bdaf9453268d7e1fa29";
-  let amount = parseInt((totalCost * 100 * rate).toFixed(2));
+  let amount = parseInt(totalCost * 100 * rate);
   // alert(typeof amount);
   console.log(amount);
   const [email, setEmail] = useState("");
