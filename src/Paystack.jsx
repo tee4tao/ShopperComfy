@@ -60,6 +60,7 @@ const Paystack = () => {
   const publicKey = "pk_test_966df8c4dafebc42e4007bdaf9453268d7e1fa29";
   let amount = parseFloat(totalCost * 100 * rate.toFixed(2));
   // alert(typeof amount);
+  console.log(amount);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
