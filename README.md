@@ -36,6 +36,6 @@ This is a user-friendly E-commerce website where users can buy goods like phones
 
 ## Screenshots
 
-[testing](/src/images/placeholder.png)
+![testing](/src/images/placeholder.png)
 
 #### Dummy
