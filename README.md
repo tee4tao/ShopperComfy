@@ -9,7 +9,7 @@ This is a user-friendly E-commerce website where users can buy goods like phones
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [API Reference](#API-reference)
-- [Contributing](#contributing)
+- [Screenshots](#Screenshots)
 - [License](#license)
 
 ## Features
@@ -27,11 +27,15 @@ This is a user-friendly E-commerce website where users can buy goods like phones
 - CSS
 - HTML
 - React Router V6.22.3
-- React Star Ratings [npmjs.com](https://www.npmjs.com/package/react-star-ratings/v/1.0.4) [the github repo](https://github.com/ekeric13/react-star-ratings/blob/master/README.md)
+- React Star Ratings [npmjs.com](https://www.npmjs.com/package/react-star-ratings/v/1.0.4) and [the github repo](https://github.com/ekeric13/react-star-ratings/blob/master/README.md)
 
 ## API Reference
 
 - [dummyjson.com](https://dummyjson.com/docs) is the link to the official docs of the API where I fetched all the product on the website from.
 - The link to the github repo of the API I used for my currency conversion from USD to NGN. [Currency Converter](https://github.com/fawazahmed0/exchange-api?tab=readme-ov-file)
+
+## Screenshots
+
+[testing](/src/images/placeholder.png)
 
 #### Dummy
