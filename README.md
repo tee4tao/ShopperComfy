@@ -10,7 +10,6 @@ This is a user-friendly E-commerce website where users can buy goods like phones
 - [Technologies Used](#technologies-used)
 - [API Reference](#API-reference)
 - [Screenshots](#Screenshots)
-- [License](#license)
 
 ## Features
 
@@ -37,15 +36,23 @@ This is a user-friendly E-commerce website where users can buy goods like phones
 ## Screenshots
 
 ![Sign-up Page](</src/images/Screenshot(175).png>)
-![Login Page](</src/images/Screenshot(176).png>)
-![Home Page](</src/images/Screenshot(177).png>)
-![Product Page](</src/images/Screenshot(178).png>)
-![Product Page](</src/images/Screenshot(179).png>)
-![Cart Page](</src/images/Screenshot(180).png>)
-![Paystack Info Page](</src/images/Screenshot(181).png>)
-![Paystack Payment Page](</src/images/Screenshot(182).png>)
-![Payment Success Page](</src/images/Screenshot(183).png>)
-![User Account Page](</src/images/Screenshot(184).png>)
-![User Account Page](</src/images/Screenshot(185).png>)
 
-#### Dummy
+![Login Page](</src/images/Screenshot(176).png>)
+
+![Home Page](</src/images/Screenshot(177).png>)
+
+![Product Page](</src/images/Screenshot(178).png>)
+
+![Product Page](</src/images/Screenshot(179).png>)
+
+![Cart Page](</src/images/Screenshot(180).png>)
+
+![Paystack Info Page](</src/images/Screenshot(181).png>)
+
+![Paystack Payment Page](</src/images/Screenshot(182).png>)
+
+![Payment Success Page](</src/images/Screenshot(183).png>)
+
+![User Account Page](</src/images/Screenshot(184).png>)
+
+![User Account Page](</src/images/Screenshot(185).png>)
