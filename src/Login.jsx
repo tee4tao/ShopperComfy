@@ -7,7 +7,6 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import { useGlobalContext } from "./context";
 
 const Login = () => {
-  // const [username, setUsername] = useState("");
   const { username, setUsername } = useGlobalContext();
   const [password, setPassword] = useState("");
   const [type, setType] = useState("password");
@@ -54,8 +53,6 @@ const Login = () => {
   };
   const closeAlert = () => {
     setDanger(false);
-    // setAddSuccess(false);
-    // setDeleteSuccess(false);
   };
   useEffect(() => {
     let dangerAlertTime = setTimeout(() => {
@@ -63,20 +60,6 @@ const Login = () => {
     }, 3000);
     return () => clearTimeout(dangerAlertTime);
   }, [danger]);
-  // const getUser = async (id) => {
-  //   try {
-  //     const resp = await fetch(`https://dummyjson.com/users/${id}`);
-  //     if (!resp.ok) {
-  //       throw new Error(`Something went wrong ${resp.status}`);
-  //     }
-  //     let user = await resp.json();
-  //     console.log(user);
-  //     setUserUsername(user.username);
-  //     setUserPassword(user.password);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
   return (
     <main className="h-screen w-screen flex justify-center items-center fixed">
       <section className="h-full w-full flex flex-col login-container rounded-md  justify-center items-center">
@@ -104,8 +87,6 @@ const Login = () => {
             action=""
             className="mb-6 h-3/4 w-3/4 hover:bg-Dark-nude flex flex-col items-center justify-center rounded-lg shadow-lg ease-linear duration-300 hover:shadow-2xl p-4"
           >
-            {/* <div className="mb-4"> */}
-            {/* <label htmlFor="username">Username:</label> */}
             <input
               type="text"
               id="username"
@@ -114,7 +95,6 @@ const Login = () => {
               placeholder="Your username"
               className="name border-2 w-3/5 mb-4 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300"
             />
-            {/* </div> */}
             <div className="password-container mb-4 flex w-3/5">
               <input
                 type={type}
@@ -136,14 +116,6 @@ const Login = () => {
                 )}
               </span>
             </div>
-            {/* <div className="text-red-600">
-              {invalid
-                ? `Invalid username or password`
-                : invalidPassword
-                ? `Invalid password`
-                : ``}
-            </div> */}
-            {/* )} */}
             <button
               type="submit"
               className="border-2 w-3/5 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 ease-linear duration-300 hover:text-Dark-nude hover:bg-white"

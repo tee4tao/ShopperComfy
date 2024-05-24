@@ -7,7 +7,6 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import { useGlobalContext } from "./context";
 
 const SignUp = () => {
-  // const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -49,8 +48,6 @@ const SignUp = () => {
   }, [detail]); //check later!!!
   const closeAlert = () => {
     setDanger(false);
-    // setAddSuccess(false);
-    // setDeleteSuccess(false);
   };
   useEffect(() => {
     let dangerAlertTime = setTimeout(() => {
@@ -88,7 +85,6 @@ const SignUp = () => {
             className="mb-6 h-3/4 w-3/4 hover:bg-Dark-nude flex flex-col items-center justify-center rounded-lg shadow-lg ease-linear duration-300 hover:shadow-2xl p-4"
             onSubmit={handleSubmit}
           >
-            {/* <div className="mb-4"> */}
             <input
               type="text"
               value={name}
@@ -96,8 +92,6 @@ const SignUp = () => {
               placeholder="Your name"
               className="name border-2 w-3/5 mb-4 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300 md:w-3/5"
             />
-            {/* </div> */}
-            {/* <div className="mb-4"> */}
             <input
               type="text"
               value={username}
@@ -105,8 +99,6 @@ const SignUp = () => {
               placeholder="Your username"
               className="username border-2 mb-4 w-3/5 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300"
             />
-            {/* </div> */}
-            {/* <div className="mb-4"> */}
             <input
               type="email"
               value={email}
@@ -114,7 +106,6 @@ const SignUp = () => {
               placeholder="Your email"
               className="email border-2 mb-4 w-3/5 border-black h-14 rounded-md p-2 text-xl ease-linear duration-300"
             />
-            {/* </div> */}
             <div className="password-container mb-4 flex w-3/5">
               <input
                 type={type}

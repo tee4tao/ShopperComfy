@@ -2,35 +2,12 @@ import React, { useEffect, useState } from "react";
 import { PaystackButton } from "react-paystack";
 import { useGlobalContext } from "./context";
 
-// import { Elements } from "@stripe/react-stripe-js";
-// import { loadStripe } from "@stripe/stripe-js";
-// import CheckoutForm from "./CheckoutForm";
-// const stripePromise = loadStripe(
-//   "pk_test_51OkjzaA31SZONt1uKcTrxNsz5fPeVbEDXHLlYsT8YaCy1UhaTetvrwRlPleUvQUx1HQFlWmi0t6SxDvjkP1vzkvB009kQrjkIC"
-// );
 
 const Paystack = () => {
-  // const options = {
-  //   // passing the client secret obtained from the server
-  //   // clientSecret: "{{CLIENT_SECRET}}",
-  //   mode: "payment",
-  //   amount: 1099,
-  //   currency: "usd",
-  //   // Fully customizable with appearance API.
-  //   appearance: {
-  //     /*...*/
-  //   },
-  // };
 
-  // return (
-  //   <Elements stripe={stripePromise} options={options}>
-  //     <CheckoutForm />
-  //   </Elements>
-  // );
   ///////////////////
   let { setShowCategory } = useGlobalContext();
   const [rate, setRate] = useState(0);
-  // const navigateTo = useNavigate();
   const getRate = async () => {
     try {
       const resp = await fetch(
@@ -44,23 +21,17 @@ const Paystack = () => {
       setRate(convert.usd.ngn);
     } catch (err) {
       console.log(err);
-      //  setErrMessage(err.message);
-      //  setIsError(true);
-      //  setIsLoading(false);
     }
   };
   useEffect(() => {
     getRate();
   }, []);
-  // console.log(rate);
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
   let totalCost = localStorage.getItem(`totalcost`);
   const publicKey = "pk_test_966df8c4dafebc42e4007bdaf9453268d7e1fa29";
   let amount = parseInt(totalCost * 100 * rate);
-  // alert(typeof amount);
-  console.log(amount);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -77,9 +48,7 @@ const Paystack = () => {
       window.location.href = `/home/${loadedUser.username}`;
       localStorage.removeItem(`productList`);
     },
-    // alert("Thanks for doing business with us! Come back soon!!"),
     onClose: () => alert("Wait! Don't leave :("),
-    // callback_url: `home/${loadedUser.username}`,
   };
   return (
     <div
@@ -104,7 +73,6 @@ const Paystack = () => {
               type="text"
               id="name"
               value={loadedUser.name}
-              // onChange={(e) => setName(e.target.value)}
             />
             <label className="text-xl my-2">Email</label>
             <input
@@ -112,7 +80,6 @@ const Paystack = () => {
               type="text"
               id="email"
               placeholder={loadedUser.email}
-              // value={loadedUser.email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <label className="text-xl my-2">Phone</label>

@@ -12,7 +12,6 @@ const Product = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [errMessage, setErrMessage] = useState(``);
-  // const [eachProduct, setEachProduct] = useState([]);
   const [index, setIndex] = useState(0);
   const [cartItem, setCartItem] = useState(true);
   const [cartQuantity, setCartQuantity] = useState(0);
@@ -21,7 +20,6 @@ const Product = () => {
   const [dangerRemove, setDangerRemove] = useState(false);
   const [dangerMessage, setDangerMessage] = useState("");
   const [dangerRemoveMessage, setDangerRemoveMessage] = useState("");
-  // const [productList, setProductList] = useState([]);
   const {
     eachProduct,
     setEachProduct,
@@ -31,8 +29,6 @@ const Product = () => {
     setCartItemsNumber,
     setShowCategory,
     setShowLinks,
-    // cartQuantity,
-    // setCartQuantity,
   } = useGlobalContext();
   const increaseQuantity = () => {
     setCartQuantity(cartQuantity + 1);
@@ -46,20 +42,7 @@ const Product = () => {
     }
     console.log(cartQuantity);
   };
-  // useEffect(() => {
-  //   if (cartQuantity != 0) {
-  //     localStorage.setItem(`cartQuantity`, cartQuantity);
-  //   }
-  // }, [cartQuantity]);
-  // useEffect(() => {
-  //   const loadedQuantity = parseInt(localStorage.getItem(`cartQuantity`));
-  //   // console.log(typeof parseInt(loadedQuantity));
-  //   if (loadedQuantity) {
-  //     setCartQuantity(loadedQuantity);
-  //   } else {
-  //     setCartQuantity(0);
-  //   }
-  // }, []);
+
   const addToCart = () => {
     const isFound = productList.some((element) => {
       if (element.id === eachProduct.id) {
@@ -77,7 +60,6 @@ const Product = () => {
     }
     if (isFound) {
       setDanger(true);
-      // setSuccess(false);
       setDangerMessage("Item already in cart");
     }
     setCartItem(!cartItem);
@@ -95,11 +77,6 @@ const Product = () => {
     return () => clearTimeout(dangerAlertTime);
   }, [success]);
   const removeFromCart = (id) => {
-    // const loadedCart = localStorage.getItem("productList")
-    //   ? JSON.parse(localStorage.getItem("productList"))
-    //   : []; // To get the items saved in the local storage
-    // let newProductList = productList.filter((product) => product.id !== id);
-    // setProductList(newProductList);
     setProductList((products) => {
       return products.filter((items) => {
         return items.id !== id;
@@ -152,7 +129,6 @@ const Product = () => {
     } else {
       setCartItemsNumber(0); //if there's no item in the localstorage, then we make our cart number 0
     }
-    // console.log(loadedCart);
   }, [productList]);
   useEffect(() => {
     if (eachProduct.length != 0) {
@@ -173,11 +149,6 @@ const Product = () => {
       clearInterval(slider);
     };
   }, [index]);
-  // useEffect(() => {
-  //   if (eachProduct.length != 0) {
-  //     console.log(eachProduct);
-  //   }
-  // }, []);
   useEffect(() => {
     getEachProduct();
   }, []);

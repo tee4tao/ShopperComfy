@@ -117,7 +117,6 @@ const Eachproduct = ({
                     src={image}
                     alt={eachProduct.title}
                     className={`${position} w-96 object-cover rounded-t-md ease-linear duration-300 absolute bottom-44 opacity-0`}
-                    // onClick={handleClick}
                   />
                 );
               })
@@ -134,11 +133,9 @@ const Eachproduct = ({
         </div>
 
         <div className="p-2 flex flex-col justify-between absolute -bottom-0">
-          {/* <div className="item-header flex items-center justify-between w-full mb-4"> */}
           <h3 className="item-name text-xl">{eachProduct.title}</h3>
-          {/* </div> */}
           <p className="item-desc">{eachProduct.description}</p>
-          <p className="item-price font-extrabold text-xl tracking-wide text-white bg-Dark-nude w-20 text-center p-1 rounded-md">
+          <p className="item-price font-extrabold text-xl tracking-wide text-white bg-Dark-nude w-max text-center p-1 rounded-md">
             $ {eachProduct.price}
           </p>
           <div className="flex items-center text-Dark-nude">
@@ -162,23 +159,6 @@ const Eachproduct = ({
           </button>
         </>
       )}
-      {/* <button className="prev" onClick={() => setIndex(index - 1)}>
-          <FiChevronLeft />
-        </button>
-        <button className="next" onClick={() => setIndex(index + 1)}>
-          <FiChevronRight />
-        </button> */}
-      {/* <div className="flex justify-between items-center w-48 mx-auto h-10">
-        <button className="" onClick={decreaseQuantity}>
-          <FaMinusSquare className="h-6 w-6 text-Dark-nude ease-linear duration-300 hover:bg-Dark-nude hover:text-white" />
-        </button>
-        <div className="text-Dark-nude text-2xl font-semibold">
-          {cartQuantity}
-        </div>
-        <button onClick={increaseQuantity}>
-          <FaPlusSquare className="h-6 w-6 text-Dark-nude ease-linear duration-300 hover:bg-Dark-nude hover:text-white" />
-        </button>
-      </div> */}
       {cartItem ? (
         <button
           className="border-2 w-48 mx-auto bg-Dark-nude text-white h-10 rounded-md p-2 font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white uppercase"
@@ -196,13 +176,6 @@ const Eachproduct = ({
           remove from cart
         </button>
       )}
-      {/* <button
-           className="border-2 w-48 mx-auto bg-Dark-nude text-white h-10 rounded-md p-2 font-bold md:text-xl flex items-center justify-around ease-linear duration-300 hover:text-Dark-nude hover:bg-white uppercase"
-           onClick={addToCart}
-         >
-           <MdAddShoppingCart className="text-2xl" />
-           add to cart
-         </button> */}
     </section>
   );
 };

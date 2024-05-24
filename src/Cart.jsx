@@ -23,16 +23,8 @@ const Cart = () => {
   const clearCart = () => {
     localStorage.removeItem(`productList`);
     setTest([]);
-    // loadedCart.length = 0;
-    // console.log(loadedCart.length);
   };
   useEffect(() => {
-    // const loadedCart = localStorage.getItem("productList")
-    //   ? JSON.parse(localStorage.getItem("productList"))
-    //   : []; // To get the items saved in the local storage
-    // let uniqueCategory = [
-    //   ...new Map(loadedCart.map((m) => [m.id, m])).values(),
-    // ];
     let loadedCart = localStorage.getItem("productList")
       ? JSON.parse(localStorage.getItem("productList"))
       : []; // To get the items saved in the local storage
@@ -41,8 +33,6 @@ const Cart = () => {
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
     : [];
-  // console.log(uniqueCategory);
-  // console.log(loadedCart);
   const removeFromCart = (id) => {
     const loadedCart = localStorage.getItem("productList")
       ? JSON.parse(localStorage.getItem("productList"))
@@ -53,18 +43,6 @@ const Cart = () => {
     }
     localStorage.setItem(`productList`, JSON.stringify(loadedCart));
     setTest(loadedCart);
-    // let newGoods = loadedCart.filter((item) => {
-    //   return item.id !== id;
-    // });
-    // console.log(newGoods);
-    // useEffect(() => {
-    // localStorage.setItem(`productList`, JSON.stringify(newGoods));
-    // }, []);
-    // setProductList((products) => {
-    //   return products.filter((items) => {
-    //     return items.id !== id;
-    //   });
-    // });
   };
   useEffect(() => {
     setCartItemsNumber(test.length);
@@ -118,13 +96,11 @@ const Cart = () => {
           >
             clear cart
           </button>
-          {/* <button className=" border-4 text-white text-xl w-32 bg-green-600 p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-green-600 mt-8"> */}
           <Link to={`/cart/paystack`}>
             <button className=" border-4 text-white text-xl w-32 bg-green-600 p-2 rounded-xl ease-linear duration-300 hover:bg-white hover:text-green-600 mt-8 capitalize">
               Checkout
             </button>
           </Link>
-          {/* </button> */}
         </div>
       </section>
     </main>

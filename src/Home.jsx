@@ -8,9 +8,6 @@ const Home = () => {
   const [isError, setIsError] = useState(false);
   const [errMessage, setErrMessage] = useState(``);
   const [products, setProducts] = useState([]);
-  // const loadedUser = localStorage.getItem("userDetail")
-  //   ? JSON.parse(localStorage.getItem("userDetail"))
-  //   : [];
   const getProducts = async () => {
     try {
       const resp = await fetch(`https://dummyjson.com/products`);
@@ -18,7 +15,6 @@ const Home = () => {
         throw new Error(`Something went wrong, ${resp.status}`);
       }
       let product = await resp.json();
-      // console.log(product);
       setProducts(product);
       setIsLoading(false);
     } catch (err) {

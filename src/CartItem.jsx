@@ -20,7 +20,6 @@ const CartItem = ({
     if (increase.id === id) {
       setItemQuantity((itemQuantity += 1));
     }
-    // setItemQuantity((increase.amount += 1));
   };
   let handleDecrease = (id) => {
     let decrease = test.find((item) => {
@@ -49,15 +48,9 @@ const CartItem = ({
   useEffect(() => {
     localStorage.setItem(`totalcost`, totalCost);
   }, [totalCost]);
-  // itemQuantity = test.reduce((acc, curr) => {
-  //   acc += itemQuantity;
-  //   return acc; // Math.round((num + Number.EPSILON) * 100) / 100 will round-off my value to 2dp
-  // }, 0);
-  //   console.log(totalAmount);
 
   useEffect(() => {
     setTotalCost(totalCost);
-    // setTotalAmount(totalAmount);
   }, [totalCost]); //To resolve the warning(Cannot update a component while rendering a different component), I wrap the logic that updates the state(totalCost) in the useEffect hook.
   return (
     <article className="flex justify-between items-center mb-8 w-11/12">

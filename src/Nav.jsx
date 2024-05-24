@@ -146,7 +146,7 @@ const Nav = () => {
                           className="hover:pr-6 hover:pl-0 w-max"
                         >
                           <Link
-                            to={`home/${item}`}
+                            to={`home/${item.name}`}
                             className={`ease-linear duration-300 hover:bg-Dark-nude hover:text-white rounded-md capitalize`}
                           >
                             {item.name}

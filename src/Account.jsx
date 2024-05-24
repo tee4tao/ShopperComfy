@@ -8,7 +8,6 @@ const Account = () => {
   const loadedImg = localStorage.getItem("recent-image")
     ? localStorage.getItem("recent-image")
     : [];
-  // console.log(loadedUser);
   const [imgSrc, setImgSrc] = useState(placeholder);
   const [userFirstName, setUserFirstName] = useState(loadedUser.name);
   const [userEmail, setUserEmail] = useState(loadedUser.email);
@@ -33,9 +32,6 @@ const Account = () => {
   };
   const handleImage = (e) => {
     setImgSrc(URL.createObjectURL(e.target.files[0]));
-    // setImgSrc(loadedImg);
-    // setImgSrc(uploader(e.target.files[0]));
-    // uploader();
     uploader(e.target.files[0]);
   };
   const uploader = (file) => {
@@ -69,7 +65,6 @@ const Account = () => {
         </div>
         <form
           action=""
-          // onSubmit={handleSubmit}
           className="flex flex-col w-3/5 rounded-lg shadow-lg ease-linear duration-300 hover:shadow-2xl p-4"
         >
           <label htmlFor="userFirstName" className="text-xl mb-2">
@@ -121,12 +116,6 @@ const Account = () => {
               Save
             </button>
           )}
-          {/* <button
-            type="submit"
-            className="border-2 w-3/5 bg-Dark-nude text-white h-10 rounded-md p-2 text-xl flex items-center justify-center mt-12 mx-auto ease-linear duration-300 hover:text-Dark-nude hover:bg-white"
-          >
-            Save
-          </button> */}
         </form>
       </section>
     </main>
