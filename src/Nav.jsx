@@ -5,7 +5,6 @@ import { IoCartOutline } from "react-icons/io5";
 import { useGlobalContext } from "./context";
 
 const Nav = () => {
-  // const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
   const container = useRef(null);
@@ -21,23 +20,11 @@ const Nav = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [errMessage, setErrMessage] = useState(``);
-  // const [showCategory, setShowCategory] = useState(false);
   const [centerPosition, setCenterPosition] = useState(0);
   const [bottomPosition, setBottomPosition] = useState(0);
   const categoryClick = () => {
     setShowLinks(false);
     setShowCategory(false);
-  };
-  const displaySubmenu = (e) => {
-    //  const page = e.target.textContent;
-    const tempBtn = e.target.getBoundingClientRect();
-    const center = (tempBtn.left + tempBtn.right) / 2;
-    setCenterPosition(center);
-    console.log(centerPosition);
-    const bottom = tempBtn.bottom + 4;
-    setBottomPosition(bottom);
-    //  openSubmenu(page, { center, bottom });
-    setShowCategory(true);
   };
   const loadedUser = localStorage.getItem("userDetail")
     ? JSON.parse(localStorage.getItem("userDetail"))
@@ -50,11 +37,6 @@ const Nav = () => {
       ...new Map(loadedCart.map((m) => [m.id, m])).values(),
     ];
     setCartItemsNumber(loadedCart.length);
-    // if (uniqueCategory.length > 0) {
-    //   setCartItemsNumber(uniqueCategory.length);
-    // } else {
-    //   setCartItemsNumber(0);
-    // }
   }, [cartItemsNumber]);
 
   useEffect(() => {
@@ -72,7 +54,6 @@ const Nav = () => {
         throw new Error(`Something went wrong, ${resp.status}`);
       }
       let category = await resp.json();
-      // console.log(category);
       setProductsCategory(category);
       setIsLoading(false);
     } catch (err) {
@@ -83,12 +64,6 @@ const Nav = () => {
     }
   };
   useEffect(() => {
-    // setColumns("col-2");
-    // const submenu = container.current;
-    // submenu.style.left = `${centerPosition}px`;
-    // submenu.style.top = `${bottomPosition}px`;
-    // setCenterPosition(centerPosition);
-    // setBottomPosition(bottomPosition);
   }, [centerPosition, bottomPosition, showCategory]);
   useEffect(() => {
     if (showCategory) {
@@ -156,15 +131,10 @@ const Nav = () => {
               <div
                 className="capitalize text-lg text-Dark-nude w-screen hover:bg-Dark-nude hover:text-white ease-linear duration-300 md:text-white md:w-auto md:hover:bg-white md:rounded-full md:hover:text-Dark-nude md:hover:px-2"
                 onClick={() => setShowCategory(!showCategory)}
-                // onMouseOver={displaySubmenu}
-                // onMouseOut={() => setShowCategory(false)}
-                // onClick={categoryClick}
-                // onClick={() => setShowCategory(!showCategory)}
               >
                 Category
                 {showCategory && (
                   <span
-                    // className="fixed text-Dark-nude bg-white z-10 rounded-2xl shadow-2xl left-28 md:left-auto  top-28 md:top-12"
                     className={`${
                       showCategory ? "submenu show" : "submenu"
                     } text-Dark-nude left-28 top-28 md:left-auto`}
@@ -173,14 +143,13 @@ const Nav = () => {
                       return (
                         <div
                           key={index}
-                          className="hover:pr-6 hover:pl-0"
-                          // style={{ left: centerPosition, top: bottomPosition }}
+                          className="hover:pr-6 hover:pl-0 w-max"
                         >
                           <Link
                             to={`home/${item}`}
                             className={`ease-linear duration-300 hover:bg-Dark-nude hover:text-white rounded-md capitalize`}
                           >
-                            {item}
+                            {item.name}
                           </Link>
                         </div>
                       );

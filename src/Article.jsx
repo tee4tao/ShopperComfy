@@ -58,7 +58,7 @@ const Article = ({ items }) => {
         >
           <h3 className="item-name text-xl">{title}</h3>
           <p className="item-desc">{description}</p>
-          <p className="item-price font-extrabold text-xl tracking-wide text-white bg-Dark-nude w-20 text-center p-1 rounded-md mb-16">
+          <p className="item-price font-extrabold text-xl tracking-wide text-white bg-Dark-nude w-max text-center p-1 rounded-md mb-16">
             $ {price}
           </p>
         </div>
