@@ -64,7 +64,7 @@ const CategoryProduct = () => {
         setShowCategory(false);
       }}
     >
-      <section className="mx-1 md:w-3/5 max-w-7xl grid grid-cols-2 lg:grid-cols-3 gap-4 ease-linear duration-300">
+      <section className="mx-1 container grid md:grid-cols-2 lg:grid-cols-3 p-4 gap-2 ease-linear duration-300">
         {products.products.map((items) => {
           return <CategoryArticle items={items} key={items.id} />;
         })}
